@@ -49,7 +49,7 @@ echo "remove the old Ubuntu backup: $OLD_FILE"
 
 # photo backup
 # Print start status message.
-echo "Start Backing up $backup_photos to $photo_dest/$archive_photos"
+echo "Start Backing up $backup_photos to $photos_dest/$archive_photos"
 date
 echo
     
