@@ -1,0 +1,128 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/services
+# - System Monitor:
+#     - Network Usage:
+#         widget:
+#           type: glances
+#           version: 4
+#           url: https://glances.xuchengcat.cn
+#           metric: network:pppoe_dial
+#           chart: false
+#     - Temperature:
+#         widget:
+#           type: glances
+#           version: 4
+#           url: https://glances.xuchengcat.cn
+#           metric: sensor:pch_cannonlake 0
+#           chart: false
+# - Storage Monitor:
+    # - HDD14T:
+    #     widget:
+    #       type: glances
+    #       version: 4
+    #       url: https://glances.xuchengcat.cn
+    #       metric: fs:/mnt/HDD14T
+    #       chart: false
+    # - SDD512G:
+    #     widget:
+    #       type: glances
+    #       version: 4
+    #       url: https://glances.xuchengcat.cn
+    #       metric: fs:/etc/hosts
+    #       chart: false
+
+- NA Area:
+    - Jellyfin:
+        icon: /icons/jellyfin.png
+        href: https://jellyfin.xuchengcat.cn
+        description: 影音娱乐
+        server: my-docker
+        container: jellyfin_qsv
+        widget:
+          type: jellyfin
+          url: https://jellyfin.xuchengcat.cn
+          key: 952a6776a69f4cc98849716f52a95e32
+          enableNowPlaying: true
+          enableBlocks: true
+          showEpisodeNumber: true
+          expandOneStreamToTwoRows: false
+    - Transmission:
+        icon: /icons/transmission.png
+        href: https://transmission.xuchengcat.cn
+        description: 下载服务
+        server: my-docker
+        container: transmission
+        widget:
+          type: transmission
+          url: https://transmission.xuchengcat.cn
+          username: xuau
+          password: 123456
+    - NextCloud:
+        icon: /icons/nextcloud.png
+        href: https://nextcloud.xuchengcat.cn
+        description: 私有云服务 
+        server: my-docker
+        container: nextcloud
+        # widget:
+        #   type: nextcloud
+        #   url: https://nextcloud.xuchengcat.cn
+        #   username: xuau
+        #   password: 123456
+        #   fields: ["numfiles", "numshares"]
+    - PhotoPrism:
+        icon: /icons/photoprism.png
+        href: https://photoprism.xuchengcat.cn
+        description: 照片存储
+        server: my-docker
+        container: bark-server
+        # widget:
+        #   type: photoprism
+        #   username: admin
+        #   password: 123456
+        #   url: http://192.168.2.1:2342
+    # - Glances:
+    #     icon: /icons/cadvisor.png
+    #     href: https://glances.xuchengcat.cn
+    #     description: 状态查询
+    #     server: my-docker
+    #     container: glances
+    #     widget:
+    #       type: glances
+    #       version: 4
+    #       url: https://glances.xuchengcat.cn
+    #       metric: sensor:Package id 0
+    #       chart: false
+
+- HA Area:
+    - HomeAssistant:
+        icon: /icons/home-assistant-alt.png
+        href: https://homeassistant.xuchengcat.cn
+        description: 智能家居
+    - Nodred:
+        icon: /icons/node-red.png
+        href: https://nodred.xuchengcat.cn
+        description: 自动化
+    - Shinobi:
+        icon: /icons/shinobi.png
+        href: https://shinobi.xuchengcat.cn/
+        description: 监控设置
+
+- MA Area:
+    - Portainer:
+        icon: /icons/portainer.png
+        href: https://portainer.xuchengcat.cn
+        description: Docker管理
+    - NginxProxy:
+        icon: /icons/nginx-proxy-manager.png
+        href: https://nginx.xuchengcat.cn
+        description: 反代理
+    - Bark:
+        icon: /icons/google-messages.png
+        abbr: BA
+        href: https://bark.xuchengcat.cn
+        description: ios通知服务
+    - ClashConfig:
+        icon: /icons/clash.png
+        href: http://192.168.2.1:9999/ui/#/
+        description: 机场配置

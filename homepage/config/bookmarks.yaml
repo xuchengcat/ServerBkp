@@ -1,0 +1,54 @@
+---
+# For configuration options and examples, please see:
+# https://gethomepage.dev/en/configs/bookmarks
+- PT:
+  - MTeam:
+    - icon: si-Douban
+      href: https://zp.m-team.io/index
+      description: 馒头
+  - Kufei:
+    - icon: si-Douban
+      href: https://kufei.org/torrents.php
+      description: 库非
+  - Cafei:
+    - icon: si-Douban
+      href: https://ptcafe.club/torrents.php
+      description: 咖啡
+
+- Management:
+  - mojievpn:
+    - abbr: MJ
+      href: https://mojie.me/#/dashboard
+      description: VPN
+  - ZeroTier:
+    - icon: si-Douban
+      href: https://my.zerotier.com/network/abfd31bd470eb354/
+      description: 内网穿透
+  - Aliyun:
+    - icon: si-Douban
+      href: https://account.aliyun.com/?spm=a2c6h.13651102.J_5404914170.82.3e221b11CMjjqa&oauth_callback=https%3A%2F%2Fdeveloper.aliyun.com%2Fmirror%2F/
+      description: 阿里云
+
+- Luntan:
+  - Hassbian:
+    - icon: si-Douban
+      href: https://bbs.hassbian.com/
+      description: 智能家居
+  - Enshan:
+    - icon: si-Douban
+      href: https://www.right.com.cn/forum/
+      description: 软路由
+  - Reddit:
+    - abbr: RE
+      href: https://reddit.com/
+      description: " "
+
+- Outside:
+    - Github:
+        - abbr: GH
+          href: https://github.com/
+          description: " "
+    - YouTube:
+        - abbr: YT
+          href: https://youtube.com/
+          description: " "
