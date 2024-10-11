@@ -44,7 +44,7 @@ OLD_FILE=$(find "$ubuntu_dest" -type f -print0 | xargs -0 ls -lt | tail -n 1 | a
 if [ -z "$OLD_FILE" ]; then
    echo "could not find old backup in dest: $ubuntu_dest"
 fi
-rm "$OLD_FILE"
+# rm "$OLD_FILE"
 echo "remove the old Ubuntu backup: $OLD_FILE"
 
 # photo backup
@@ -66,7 +66,7 @@ OLD_FILE=$(find "$photo_dest" -type f -print0 | xargs -0 ls -lt | tail -n 1 | aw
 if [ -z "$OLD_FILE" ]; then
    echo "could not find old backup in dest: $photo_dest"
 fi
-rm "$OLD_FILE"
+# rm "$OLD_FILE"
 echo "remove the old backup: $OLD_FILE"
 
 # sdd128 backup
@@ -89,5 +89,5 @@ OLD_FILE=$(find "$sdd128_dest" -type f -print0 | xargs -0 ls -lt | tail -n 1 | a
 if [ -z "$OLD_FILE" ]; then
    echo "could not find old backup in dest: $sdd128_dest"
 fi
-rm "$OLD_FILE"
+# rm "$OLD_FILE"
 echo "remove the old backup: $OLD_FILE"
