@@ -20,6 +20,10 @@
     - abbr: MJ
       href: https://mojie.me/#/dashboard
       description: VPN
+  - Excahange:
+    - abbr: EX
+      href: https://exchange.xuchengcat.cn
+      description: 交换机
   - ZeroTier:
     - icon: si-Douban
       href: https://my.zerotier.com/network/abfd31bd470eb354/
