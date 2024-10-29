@@ -26,6 +26,12 @@ scene: !include scenes.yaml
 switch:
   - platform: wake_on_lan
     name: "XuauGame"                 # 定义HA中实体的名称,可任意命名
-    mac: "D8-43-AE-9D-74-D5"        # 主机(电脑)的MAC地址
+    mac: "D8:43:AE:9D:74:D5"        # 主机(电脑)的MAC地址
     host: "192.168.2.2"            # 主机(电脑)地址,可省略
-    broadcast_address: "192.168.2.1"      # 广播地址.不可省略.此处假设路由器地址为192.168.1.1,如为其他网段需要修改
+    broadcast_address: "192.168.2.255"      # 广播地址.不可省略.此处假设路由器地址为192.168.1.1,如为其他网段需要修改
+    broadcast_port: 9
+    turn_off: 
+      service: shell_command.turn_off_connect
+
+shell_command:
+  turn_off_connect: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "shutdown /s /t 10"'
