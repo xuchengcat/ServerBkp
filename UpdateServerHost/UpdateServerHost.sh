@@ -2,54 +2,7 @@
 ZeroTierToken="jQYD33GvsXNnRgi2HLAXvAccBsqfumpN"
 NWID="abfd31bd470eb354"
 MBID="5664493eae" # home server
-
-# APNS Configuration
-TOKEN_KEY_FILE_NAME="./BARKAuthKey.key"  # 需要填写实际的key文件路径
-DEVICE_TOKEN="b9b51d973e2e674df800039dd58b9e193a916a831875db569603689f1dd5c01b"  # 你的设备token
-TEAM_ID="5U8LBRXG3A"
-AUTH_KEY_ID="LH4T9V5U4R"
-TOPIC="me.fin.bark"
-APNS_HOST_NAME="api.push.apple.com"
-
-# Function to generate APNS token
-generate_apns_token() {
-    JWT_ISSUE_TIME=$(date +%s)
-    JWT_HEADER=$(printf '{ "alg": "ES256", "kid": "%s" }' "${AUTH_KEY_ID}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
-    JWT_CLAIMS=$(printf '{ "iss": "%s", "iat": %d }' "${TEAM_ID}" "${JWT_ISSUE_TIME}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
-    JWT_HEADER_CLAIMS="${JWT_HEADER}.${JWT_CLAIMS}"
-    JWT_SIGNED_HEADER_CLAIMS=$(printf "${JWT_HEADER_CLAIMS}" | openssl dgst -binary -sha256 -sign "${TOKEN_KEY_FILE_NAME}" | openssl base64 -e -A | tr -- '+/' '-_' | tr -d =)
-    echo "${JWT_HEADER}.${JWT_CLAIMS}.${JWT_SIGNED_HEADER_CLAIMS}"
-}
-
-# Function to send APNS notification
-send_notification() {
-    local title="$1"
-    local body="$2"
-    local AUTHENTICATION_TOKEN=$(generate_apns_token)
-    
-    # Prepare JSON payload
-    local payload=$(cat <<EOF
-{
-    "aps": {
-        "alert": {
-            "title": "${title}",
-            "body": "${body}"
-        },
-        "sound": "default",
-        "badge": 1
-    }
-}
-EOF
-)
-    
-    curl -v \
-        --header "apns-topic: $TOPIC" \
-        --header "apns-push-type: alert" \
-        --header "authorization: bearer $AUTHENTICATION_TOKEN" \
-        --data "$payload" \
-        --http2 \
-        "https://${APNS_HOST_NAME}/3/device/${DEVICE_TOKEN}"
-}
+BARK_TOKEN="YkmdfF9qq8NqyJPLt2cGqR" # my device token
 
 # Path to SmartDNS config file
 SMARTDNS_CONF="/etc/smartdns/smartdns.conf"
@@ -88,8 +41,9 @@ while true; do
                 echo "$(date): Added IPv6 host record for xuchengcat.cn to SmartDNS"
                 echo "$(date): Host record: xuchengcat.cn -> $physical_addr"
             else
-                # Send notification when not an IPv6 address
-                send_notification "DNS更新失败" "获取到无效IP地址: ${physical_addr}"
+                # Send Bark notification when not an IPv6 address
+                curl -s "https://api.day.app/$BARK_TOKEN/DNS_Update_Failed/Invalid_IP_Address:_${physical_addr}?isArchive=1"
+                
                 echo "$(date): Not an IPv6 address: $physical_addr"
             fi
             
@@ -105,5 +59,5 @@ while true; do
     fi
 
     # Sleep for 1 hour
-    sleep 5
+    sleep 3600
 done
