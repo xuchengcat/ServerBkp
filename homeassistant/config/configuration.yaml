@@ -36,11 +36,3 @@ switch:
 shell_command:
   turn_off_connect: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "shutdown /s /t 10"'
 
-#Server Sensor
-sensor:
-  - platform: command_line
-    name: "HDD12T Temperature"
-    command: "sudo smartctl -A /dev/sdc | grep -i temperature | awk '$10 != 0 {print $10}' | head -n 1"
-    unit_of_measurement: "°C"
-    scan_interval: 300  # 每5分钟更新一次
-    value_template: "{{ value | float }}"
