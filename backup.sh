@@ -11,44 +11,57 @@ backup_ubuntu="/"
 backup_sdd128="/mnt/SDD128G"
 backup_photos="/mnt/HDD12T/Pictures"
 
-ubuntu_dest="/mnt/HDD14T/ubuntubkp"
-photos_dest="/mnt/HDD14T/phbkp"
-sdd128_dest="/mnt/HDD14T/sddbkp"
+# Set a common destination for all backups
+common_dest="/mnt/HDD14T/commonbkp"
 
 day=$(date +"%Y-%m-%d")
 hostname=$(hostname -s)
 
 # Function to perform backup
 backup() {
+    # Parameters:
+    # $1 - source: The directory to be backed up
+    # $2 - dest: The destination directory where the backup will be stored
+    # $3 - archive_name: The name of the backup archive file
+    # $4 - exclude: Optional parameter for a file containing patterns to exclude from the backup
+
     local source=$1
     local dest=$2
     local archive_name=$3
     local exclude=$4
 
+    # Print start message with source and destination details
     echo "Start Backing up $source to $dest/$archive_name"
     date
     echo
 
+    # Perform the backup using tar
+    # -c: Create a new archive
+    # -p: Preserve permissions
+    # -z: Compress the archive with gzip
+    # -f: Use archive file
+    # --exclude-from: Exclude files matching patterns in the specified file
     if [ -n "$exclude" ]; then
         tar -cpzf "$dest/$archive_name" --exclude-from="$exclude" "$source"
     else
         tar -cpzf "$dest/$archive_name" "$source"
     fi
 
+    # Print completion message
     echo
     echo "Backup finished for $source"
     date
 
-    OLD_FILE=$(find "$dest" -type f -print0 | xargs -0 ls -lt | tail -n 1 | awk '{print $9}')
-    if [ -z "$OLD_FILE" ]; then
-        echo "could not find old backup in dest: $dest"
-    else
-        rm "$OLD_FILE"
-        echo "Removed the old backup: $OLD_FILE"
-    fi
+    # Remove old backups of the same type
+    # Find files in the destination directory that match the pattern
+    # ${archive_name%-*}*.tgz: Matches files with the same prefix as the current archive
+    # ! -name "$archive_name": Excludes the current archive from deletion
+    # -exec rm {} \;: Executes the rm command to delete each matched file
+    find "$dest" -type f -name "${archive_name%-*}*.tgz" ! -name "$archive_name" -exec rm {} \;
+    echo "Removed old backups for $source"
 }
 
-# Perform backups
-backup "$backup_ubuntu" "$ubuntu_dest" "Ubuntubkp-$hostname-$day.tgz" "$excludefile"
-backup "$backup_photos" "$photos_dest" "Photosbkp-$hostname-$day.tgz" ""
-backup "$backup_sdd128" "$sdd128_dest" "Sdd128bkp-$hostname-$day.tgz" ""
+# Perform backups to the common destination
+backup "$backup_ubuntu" "$common_dest" "Ubuntubkp-$hostname-$day.tgz" "$excludefile"
+backup "$backup_photos" "$common_dest" "Photosbkp-$hostname-$day.tgz" ""
+backup "$backup_sdd128" "$common_dest" "Sdd128bkp-$hostname-$day.tgz" ""
