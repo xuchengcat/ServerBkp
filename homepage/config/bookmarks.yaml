@@ -3,7 +3,7 @@
 # https://gethomepage.dev/en/configs/bookmarks
 - PT:
   - MTeam:
-    - icon: si-Douban
+    - icon: fa fa-douban
       href: https://zp.m-team.io/index
       description: 馒头
   - Kufei:
