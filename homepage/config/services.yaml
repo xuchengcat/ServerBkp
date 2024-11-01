@@ -76,11 +76,11 @@
         description: 照片存储
         server: my-docker
         container: bark-server
-        # widget:
-        #   type: photoprism
-        #   username: admin
-        #   password: 123456
-        #   url: http://192.168.2.1:2342
+        widget:
+          type: photoprism
+          username: admin
+          password: 123456
+          url: http://192.168.2.1:2342
     # - Glances:
     #     icon: /icons/cadvisor.png
     #     href: https://glances.xuchengcat.cn
@@ -117,11 +117,11 @@
         icon: /icons/nginx-proxy-manager.png
         href: https://nginx.xuchengcat.cn
         description: 反代理
-    - Bark:
-        icon: /icons/google-messages.png
-        abbr: BA
-        href: https://bark.xuchengcat.cn
-        description: ios通知服务
+    # - Bark:
+    #     icon: /icons/google-messages.png
+    #     abbr: BA
+    #     href: https://bark.xuchengcat.cn
+    #     description: ios通知服务
     - ClashConfig:
         icon: /icons/clash.png
         href: http://192.168.2.1:9999/ui/#/
