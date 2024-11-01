@@ -3,21 +3,21 @@
 # https://gethomepage.dev/en/configs/bookmarks
 - PT:
   - MTeam:
-    - icon: fa fa-douban
+    - icon: /icons/mteam.png
       href: https://zp.m-team.io/index
       description: 馒头
   - Kufei:
-    - icon: si-Douban
+    - icon: /icons/kufei.png
       href: https://kufei.org/torrents.php
       description: 库非
   - Cafei:
-    - icon: si-Douban
+    - icon: /icons/ptcafe.png
       href: https://ptcafe.club/torrents.php
       description: 咖啡
 
 - Management:
   - mojievpn:
-    - abbr: MJ
+    - icon: /icons/mojie.png
       href: https://mojie.me/#/dashboard
       description: VPN
   - Excahange:
@@ -25,34 +25,34 @@
       href: https://exchange.xuchengcat.cn
       description: 交换机
   - ZeroTier:
-    - icon: si-Douban
+    - icon: /icons/zerotier.png
       href: https://my.zerotier.com/network/abfd31bd470eb354/
       description: 内网穿透
   - Aliyun:
-    - icon: si-Douban
+    - icon: /icons/aliyun.png
       href: https://account.aliyun.com/?spm=a2c6h.13651102.J_5404914170.82.3e221b11CMjjqa&oauth_callback=https%3A%2F%2Fdeveloper.aliyun.com%2Fmirror%2F/
       description: 阿里云
 
 - Luntan:
   - Hassbian:
-    - icon: si-Douban
+    - icon: /icons/hassiban
       href: https://bbs.hassbian.com/
       description: 智能家居
   - Enshan:
-    - icon: /icons/reddit.png
+    - icon: /icons/enshan.png
       href: https://www.right.com.cn/forum/
       description: 软路由
   - Reddit:
-    - icon: reddit.png
+    - icon: /icons/reddit.png
       href: https://reddit.com/
       description: " "
 
 - Outside:
     - Github:
-        - abbr: GH
+        - icon: /icons/github.png
           href: https://github.com/xuchengcat/ServerBkp/
           description: " "
     - YouTube:
-        - abbr: YT
+        - icon: /icons/youtube.png
           href: https://youtube.com/
           description: " "
