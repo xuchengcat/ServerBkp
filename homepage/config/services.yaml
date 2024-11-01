@@ -75,7 +75,7 @@
         href: https://photoprism.xuchengcat.cn
         description: 照片存储
         server: my-docker
-        container: bark-server
+        container: photoprism
         widget:
           type: photoprism
           username: admin
