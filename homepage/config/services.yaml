@@ -76,11 +76,11 @@
         description: 照片存储
         server: my-docker
         container: photoprism
-        widget:
-          type: photoprism
-          username: admin
-          password: 123456
-          url: http://192.168.2.1:2342
+        # widget:
+        #   type: photoprism
+        #   username: admin
+        #   password: 123456
+        #   url: http://192.168.2.1:2342
     # - Glances:
     #     icon: /icons/cadvisor.png
     #     href: https://glances.xuchengcat.cn
