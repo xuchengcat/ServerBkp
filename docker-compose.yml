@@ -130,7 +130,7 @@ services:
       # "/host/folder:/photoprism/folder"                # Example
       - "/mnt/HDD12T/Pictures:/photoprism/originals"               # Original media files (DO NOT REMOVE)
       # - "/example/family:/photoprism/originals/family" # *Additional* media folders can be mounted like this
-      # - "~/Import:/photoprism/import"                  # *Optional* base folder from which files can be imported to originals
+      - "/mnt/HDD12T/Pictures/import:/photoprism/import"                  # *Optional* base folder from which files can be imported to originals
       - "/mnt/SDD128G/photoprism/storage:/photoprism/storage"                  # *Writable* storage folder for cache, database, and sidecar files (DO NOT REMOVE)
 
   transmission:
