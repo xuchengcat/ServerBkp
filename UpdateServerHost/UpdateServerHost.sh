@@ -2,7 +2,7 @@
 ZeroTierToken="jQYD33GvsXNnRgi2HLAXvAccBsqfumpN"
 NWID="abfd31bd470eb354"
 MBID="5664493eae" # home server
-BARK_TOKEN="YkmdfF9qq8NqyJPLt2cGqR" # my device token
+BARK_TOKEN="BkiZFumfBR3NYUE77maQq7" # my device token
 
 # Path to SmartDNS config file
 SMARTDNS_CONF="/etc/smartdns/smartdns.conf"
@@ -42,7 +42,7 @@ while true; do
                 echo "$(date): Host record: xuchengcat.cn -> $physical_addr"
             else
                 # Send Bark notification when not an IPv6 address
-                curl -s "https://api.day.app/$BARK_TOKEN/DNS_Update_Failed/Invalid_IP_Address:_${physical_addr}?isArchive=1"
+                curl -s "https://bark.xuchengcat.cn/$BARK_TOKEN/DNS_Update_Failed/Invalid_IP_Address:_${physical_addr}?isArchive=1"
                 
                 echo "$(date): Not an IPv6 address: $physical_addr"
             fi
