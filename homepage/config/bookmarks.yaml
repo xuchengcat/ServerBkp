@@ -3,21 +3,20 @@
 # https://gethomepage.dev/en/configs/bookmarks
 - PT:
   - MTeam:
-    - icon: /icons/mteam.png
+    - abbr: MT
       href: https://zp.m-team.io/index
       description: 馒头
   - Kufei:
-    - icon: /icons/kufei.png
+    - abbr: PT
       href: https://kufei.org/torrents.php
       description: 库非
   - Cafei:
-    - icon: /icons/ptcafe.png
-      href: https://ptcafe.club/torrents.php
+    - abbr: PT
       description: 咖啡
 
 - Management:
   - mojievpn:
-    - icon: /icons/mojie.png
+    - abbr: MJ
       href: https://mojie.me/#/dashboard
       description: VPN
   - Excahange:
@@ -29,7 +28,7 @@
       href: https://my.zerotier.com/network/abfd31bd470eb354/
       description: 内网穿透
   - Render:
-    - icon: /icons/aliyun.png
+    - icon: /icons/render.png
       href: https://dashboard.render.com/
       description: bark server
 
