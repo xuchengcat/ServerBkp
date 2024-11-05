@@ -208,14 +208,15 @@ services:
   #   restart: unless-stopped
 
   #服务管理
-  bark-server:
-    image: finab/bark-server
-    container_name: bark-server
-    restart: unless-stopped
-    volumes:
-      - /mnt/SDD128G/bark/data:/data
-    ports:
-      - "18001:8080"
+  #no need bark any more , use https://dashboard.render.com/ instead
+  # bark-server:
+  #   image: finab/bark-server
+  #   container_name: bark-server
+  #   restart: unless-stopped
+  #   volumes:
+  #     - /mnt/SDD128G/bark/data:/data
+  #   ports:
+  #     - "18001:8080"
       
   glances:
     image: nicolargo/glances:ubuntu-latest-full
