@@ -28,17 +28,17 @@
       href: https://my.zerotier.com/network/abfd31bd470eb354/
       description: 内网穿透
   - Render:
-    - icon: /icons/render.png
+    - abbr: BA
       href: https://dashboard.render.com/
       description: bark server
 
 - Luntan:
   - Hassbian:
-    - icon: /icons/hassiban
+    - abbr: HA
       href: https://bbs.hassbian.com/
       description: 智能家居
   - Enshan:
-    - icon: /icons/enshan.png
+    - abbr: ES
       href: https://www.right.com.cn/forum/
       description: 软路由
   - Reddit:
