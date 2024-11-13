@@ -1,0 +1,16 @@
+set_light_mode:
+  alias: Set Light Mode
+  sequence:
+    - service: xiaomi_miot.set_miot_property
+      data:
+        entity_id: "{{ entity_id }}"
+        siid: 2
+        piid: 4
+        value: >
+          {% if is_state_attr(entity_id, 'light.mode', 1) %}
+            2
+          {% else %}
+            1
+          {% endif %}
+  variables:
+    entity_id: light.yeelink_ceiling14_21b8_light  # Defaut

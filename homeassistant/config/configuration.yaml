@@ -21,6 +21,7 @@ http:
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
+sensor: !include custom_sensors.yaml
 
 #WOL Button
 switch:
