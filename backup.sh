@@ -14,6 +14,9 @@ backup_photos="/mnt/HDD12T/Pictures"
 # Set a common destination for all backups
 common_dest="/mnt/HDD14T/commonbkp"
 
+BARK_SERVER="xuau-bark-server.onrender.com"
+BARK_TOKEN="iphone" # my device token
+
 day=$(date +"%Y-%m-%d")
 hostname=$(hostname -s)
 
@@ -31,7 +34,7 @@ backup() {
     local exclude=$4
 
     # Print start message with source and destination details
-    echo "Start Backing up $source to $dest/$archive_name"
+    echo "Start Backing up $source to $dest/$archive_name-$day.tgz"
     date
     echo
 
@@ -42,9 +45,9 @@ backup() {
     # -f: Use archive file
     # --exclude-from: Exclude files matching patterns in the specified file
     if [ -n "$exclude" ]; then
-        tar -cpzf "$dest/$archive_name" --exclude-from="$exclude" "$source"
+        tar -cpzf "$dest/$archive_name-$day.tgz" --exclude-from="$exclude" "$source"
     else
-        tar -cpzf "$dest/$archive_name" "$source"
+        tar -cpzf "$dest/$archive_name-$day.tgz" "$source"
     fi
 
     # Print completion message
@@ -57,11 +60,15 @@ backup() {
     # ${archive_name%-*}*.tgz: Matches files with the same prefix as the current archive
     # ! -name "$archive_name": Excludes the current archive from deletion
     # -exec rm {} \;: Executes the rm command to delete each matched file
-    find "$dest" -type f -name "${archive_name%-*}*.tgz" ! -name "$archive_name" -exec rm {} \;
+    find "$dest" -type f -name "${archive_name%-*}*.tgz" ! -name "$archive_name-$day.tgz" -exec rm {} \;
     echo "Removed old backups for $source"
 }
 
 # Perform backups to the common destination
-backup "$backup_ubuntu" "$common_dest" "Ubuntubkp-$hostname-$day.tgz" "$excludefile"
-backup "$backup_photos" "$common_dest" "Photosbkp-$hostname-$day.tgz" ""
-backup "$backup_sdd128" "$common_dest" "Sdd128bkp-$hostname-$day.tgz" ""
+backup "$backup_ubuntu" "$common_dest" "Ubuntubkp-$hostname" "$excludefile"
+backup "$backup_photos" "$common_dest" "Photosbkp-$hostname" ""
+backup "$backup_sdd128" "$common_dest" "Sdd128bkp-$hostname" ""
+
+# Send Bark notification when finish
+curl -s "https://$BARK_SERVER/$BARK_TOKEN/ServerBackupFinished?isArchive=1"
+
