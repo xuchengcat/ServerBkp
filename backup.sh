@@ -73,6 +73,6 @@ backup() {
 files_list=$(ls "$common_dest" | tr '\n' ',')
 
 # Send Bark notification with the list of files
-curl -s "https://$BARK_SERVER/$BARK_TOKEN/ServerBackupFinished>$files_list?isArchive=1?group=Server"
+curl -s "https://$BARK_SERVER/$BARK_TOKEN/ServerBackupFinished/$files_list?group=Server"
 
 
