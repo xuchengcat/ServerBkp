@@ -65,10 +65,14 @@ backup() {
 }
 
 # Perform backups to the common destination
-backup "$backup_ubuntu" "$common_dest" "Ubuntubkp-$hostname" "$excludefile"
-backup "$backup_photos" "$common_dest" "Photosbkp-$hostname" ""
-backup "$backup_sdd128" "$common_dest" "Sdd128bkp-$hostname" ""
+# backup "$backup_ubuntu" "$common_dest" "Ubuntubkp-$hostname" "$excludefile"
+# backup "$backup_photos" "$common_dest" "Photosbkp-$hostname" ""
+# backup "$backup_sdd128" "$common_dest" "Sdd128bkp-$hostname" ""
 
-# Send Bark notification when finish
-curl -s "https://$BARK_SERVER/$BARK_TOKEN/ServerBackupFinished?isArchive=1"
+# List all files in common_dest and store in a variable
+files_list=$(ls "$common_dest" | tr '\n' ',')
+
+# Send Bark notification with the list of files
+curl -s "https://$BARK_SERVER/$BARK_TOKEN/ServerBackupFinished>$files_list?isArchive=1?group=Server"
+
 
