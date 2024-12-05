@@ -44,11 +44,11 @@ backup() {
     # -z: Compress the archive with gzip
     # -f: Use archive file
     # --exclude-from: Exclude files matching patterns in the specified file
-    # if [ -n "$exclude" ]; then
-    #     tar -cpzf "$dest/$archive_name-$day.tgz" --exclude-from="$exclude" "$source"
-    # else
-    #     tar -cpzf "$dest/$archive_name-$day.tgz" "$source"
-    # fi
+    if [ -n "$exclude" ]; then
+        tar -cpzf "$dest/$archive_name-$day.tgz" --exclude-from="$exclude" "$source"
+    else
+        tar -cpzf "$dest/$archive_name-$day.tgz" "$source"
+    fi
 
     # Print completion message
     echo
