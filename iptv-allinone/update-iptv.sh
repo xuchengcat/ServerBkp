@@ -9,6 +9,6 @@ docker compose pull youshandefeiyang/allinone:latest
 docker compose up -d
 
 # Send Bark notification with the list of files
-curl -s "https://$BARK_SERVER/$BARK_TOKEN/iptv_update_succress?group=Server"
+curl -s "https://$BARK_SERVER/$BARK_TOKEN/iptv_update_succress?group=Server&level=passive"
 
 echo "update iptv succress"
