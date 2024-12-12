@@ -7,11 +7,11 @@
       href: https://zp.m-team.io/index
       description: 馒头
   - Kufei:
-    # - abbr: PT
+    - abbr: 
       href: https://kufei.org/torrents.php
       description: 库非
   - Cafei:
-    # - abbr: PT
+    - abbr: 
       href: https://ptcafe.club/torrents.php
       description: 咖啡
 
