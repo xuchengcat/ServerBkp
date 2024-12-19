@@ -38,6 +38,7 @@ services:
       - /mnt/SDD128G/xiaomusic/conf:/app/conf
     environment:
       XIAOMUSIC_PUBLIC_PORT: 18090
+      XIAOMUSIC_PORT: 18090
       XIAOMUSIC_DISABLE_HTTPAUTH: true
       
   lyricapi:
