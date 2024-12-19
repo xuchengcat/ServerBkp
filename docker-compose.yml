@@ -27,6 +27,19 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
+  xiaomusic:
+    image: hanxi/xiaomusic
+    container_name: xiaomusic
+    restart: unless-stopped
+    ports:
+      - 18090:18090
+    volumes:
+      - /mnt/HDD12T/Media_Data_HDD/Music:/app/music
+      - /mnt/SDD128G/xiaomusic/conf:/app/conf
+    environment:
+      XIAOMUSIC_PUBLIC_PORT: 18090
+      XIAOMUSIC_DISABLE_HTTPAUTH: true
+      
   lyricapi:
     image: hisatri/lyricapi:latest
     container_name: lyricapi
