@@ -52,6 +52,11 @@
         - abbr: MW
           href: https://manwa.me/bookshelf
           description: "漫画"
+    - Xslist:
+        - abbr: XS
+          href: https://xlist.org/zh
+          description: "AI识脸"
+          
     - Github:
         - icon: /icons/github.png
           href: https://github.com/xuchengcat/ServerBkp/
