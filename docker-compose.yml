@@ -1,4 +1,3 @@
-version: '3'
 services:
   #影音娱乐
   jellyfin:
@@ -26,6 +25,8 @@ services:
     restart: 'unless-stopped'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
+    cpu_percent: 50
+    mem_limit: 4g
 
   xiaomusic:
     image: hanxi/xiaomusic
