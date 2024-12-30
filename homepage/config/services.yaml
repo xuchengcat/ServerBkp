@@ -34,7 +34,7 @@
 
 - NA Area:
     - Jellyfin:
-        icon: /icons/jellyfin.png
+        icon: si-jellyfin-#00a4dc
         href: https://jellyfin.xuchengcat.cn
         description: 影音娱乐
         server: my-docker
@@ -48,7 +48,7 @@
           showEpisodeNumber: true
           expandOneStreamToTwoRows: false
     - Transmission:
-        icon: /icons/transmission.png
+        icon: si-transmission-#D70008
         href: https://transmission.xuchengcat.cn
         description: 下载服务
         server: my-docker
@@ -59,7 +59,7 @@
           username: xuau
           password: 123456
     - NextCloud:
-        icon: /icons/nextcloud.png
+        icon: si-nextcloud-#0082C9
         href: https://nextcloud.xuchengcat.cn
         description: 私有云服务 
         server: my-docker
@@ -96,15 +96,15 @@
 
 - HA Area:
     - HomeAssistant:
-        icon: /icons/home-assistant-alt.png
+        icon: si-homeassistant-#18BCF2
         href: https://homeassistant.xuchengcat.cn
         description: 智能家居
     - EspHome:
-        icon: /icons/esphome.png
+        icon: si-esphome-#000000
         href: https://esphome.xuchengcat.cn
         description: DIY
     - Nodred:
-        icon: /icons/node-red.png
+        icon: si-nodered-#8F0000
         href: https://nodred.xuchengcat.cn
         description: 自动化
     - XiaoMusic:
@@ -118,11 +118,11 @@
 
 - MA Area:
     - Portainer:
-        icon: /icons/portainer.png
+        icon: si-portainer-#13BEF9
         href: https://portainer.xuchengcat.cn
         description: Docker管理
     - NginxProxy:
-        icon: /icons/nginx-proxy-manager.png
+        icon: si-nginxproxymanager-#F15833
         href: https://nginx.xuchengcat.cn
         description: 反代理
     # - Bark:
