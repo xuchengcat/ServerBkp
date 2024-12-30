@@ -56,7 +56,11 @@
         - abbr: XS
           href: https://xlist.org/zh
           description: "AI识脸"
-          
+      - Ref:
+        - abbr: XS
+          href: https://reference.doraemon.press/
+          description: "速查手册"
+    
     - Github:
         - icon: /icons/github.png
           href: https://github.com/xuchengcat/ServerBkp/
