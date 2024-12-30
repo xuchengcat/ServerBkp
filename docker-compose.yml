@@ -25,7 +25,7 @@ services:
     restart: 'unless-stopped'
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-    cpu_percent: 50
+    cpus: 0.5
     mem_limit: 4g
 
   xiaomusic:
