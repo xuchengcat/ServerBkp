@@ -99,9 +99,17 @@
         icon: /icons/home-assistant-alt.png
         href: https://homeassistant.xuchengcat.cn
         description: 智能家居
+    - EspHome:
+        icon: /icons/esphome.png
+        href: https://esphome.xuchengcat.cn
+        description: DIY
     - Nodred:
         icon: /icons/node-red.png
         href: https://nodred.xuchengcat.cn
+        description: 自动化
+    - XiaoMusic:
+        icon: si-Xiaomi-#ff6900
+        href: https://xiaomusic.xuchengcat.cn
         description: 自动化
     - Shinobi:
         icon: /icons/shinobi.png
