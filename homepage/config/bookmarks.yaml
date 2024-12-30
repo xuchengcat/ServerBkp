@@ -56,7 +56,7 @@
         - abbr: XS
           href: https://xlist.org/zh
           description: "AI识脸"
-      - Ref:
+    - Ref:
         - abbr: XS
           href: https://reference.doraemon.press/
           description: "速查手册"
