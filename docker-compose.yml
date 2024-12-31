@@ -255,14 +255,15 @@ services:
       #- 61208:61208
     network_mode: host
     volumes:
-      - /mnt/SDD128G/homepage/glances_conf:/etc/glances
-      - /var/run/docker.sock:/var/run/docker.sock
-      - /etc/os-release:/etc/os-release:ro
+      - /mnt/SDD128G/homepage/glances_conf:/glances/conf
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - "/run/user/1000/podman/podman.sock:/run/user/1000/podman/podman.sock:ro"
       - /mnt/HDD14T:/mnt/HDD14T
       - /mnt/HDD12T:/mnt/HDD12T
       - /mnt/camera1t:/mnt/camera1t
     environment:
-      - "GLANCES_OPT=-w"
+      - TZ=Asia/Shanghai
+      - "GLANCES_OPT=-C /glances/conf/glances.conf -w"
     restart: unless-stopped
 
   homepage:
