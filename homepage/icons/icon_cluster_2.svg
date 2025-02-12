@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon_cluster_2</title>
+    <g id="icon_cluster_2" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M22.75,8 C25.3920792,8 28.050252,8.9768513 30.0123132,10.5465002 C31.7808623,11.9613395 33,13.8697907 33,16 C33,18.1302093 31.7808623,20.0386605 30.0123132,21.4534998 C28.050252,23.0231487 25.3920792,24 22.75,24 C20.6428331,24 19.247154,23.3684812 18.3863726,22.2207726 C17.2574174,20.7154991 17,18.4714721 17,16 C17,13.5285279 17.2574174,11.2845009 18.3863726,9.77922738 C19.247154,8.63151875 20.6428331,8 22.75,8 Z" id="椭圆形" stroke="#000000" stroke-width="2"></path>
+        <rect id="矩形" fill="#000000" x="6" y="9" width="10" height="2"></rect>
+        <rect id="矩形" fill="#000000" x="6" y="13" width="9" height="2"></rect>
+        <rect id="矩形" fill="#000000" x="6" y="21" width="10" height="2"></rect>
+        <rect id="矩形" fill="#000000" x="6" y="17" width="9" height="2"></rect>
+        <text id="AUTO" font-family="SourceHanSansCN-Regular, Source Han Sans CN" font-size="10" font-weight="normal" letter-spacing="-0.5" fill="#000000">
+            <tspan x="7.375" y="34.1785714">AUTO</tspan>
+        </text>
+    </g>
+</svg>
