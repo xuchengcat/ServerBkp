@@ -1,2 +1,4 @@
 *.log
 *.png
+homeassistant/config/home-assistant.log*
+homeassistant/config/home-assistant_v2.d*
