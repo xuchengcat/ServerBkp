@@ -46,6 +46,10 @@
     - icon: /icons/reddit.png
       href: https://reddit.com/
       description: " "
+  - FrigatePlus:
+    - abbr: FR
+      href: https://plus.frigate.video/dashboard/
+      description: " "
 
 - Outside:
     - Manwa:

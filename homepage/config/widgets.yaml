@@ -6,12 +6,12 @@
     url: https://glances.xuchengcat.cn
     version: 4
     cpu: true
-    mem: false
+    mem: true
     cputemp: true
     # uptime: true
     disk:
       # - /etc/hosts
-      - /mnt/HDD14T
+      # - /mnt/HDD14T
       - /mnt/HDD12T
       - /mnt/camera1t
     #expanded: true

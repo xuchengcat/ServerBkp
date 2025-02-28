@@ -115,6 +115,10 @@
         icon: /icons/shinobi.png
         href: https://shinobi.xuchengcat.cn/
         description: 监控设置
+    - Frigate:
+        icon: /icons/frigate.png
+        href: https://frigate.xuchengcat.cn/
+        description: 监控设置
 
 - MA Area:
     - Portainer:
