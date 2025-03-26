@@ -46,10 +46,10 @@ input_boolean:
 input_select:
   badroom_mode:
     name: "卧室场景模式"
-    options：
+    options:
       - "起床"
       - "入睡"
       - "观影"
       - "白天"
     initial: "起床"
-    incon: "home-automation"
+    icon: "mdi:home-automation"
