@@ -37,3 +37,8 @@ switch:
 shell_command:
   turn_off_connect: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "shutdown /s /t 10"'
 
+# Example configuration.yaml entry
+input_boolean:
+  gamemode:
+    name: "游戏模式"
+    icon: mdi:nintendo-switch
