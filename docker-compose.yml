@@ -31,11 +31,11 @@ services:
     mem_limit: 4g
 
   xiaomusic:
-    image: hanxi/xiaomusic
+    image: docker.hanxi.cc/hanxi/xiaomusic
     container_name: xiaomusic
     restart: unless-stopped
-    # ports:
-    #   - 18090:18090
+    ports:
+      - 18090:18090
     volumes:
       - /mnt/HDD12T/Media_Data_HDD/Music:/app/music
       - /mnt/SDD128G/xiaomusic/conf:/app/conf
