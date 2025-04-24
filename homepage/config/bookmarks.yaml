@@ -29,7 +29,7 @@
       href: https://my.zerotier.com/network/abfd31bd470eb354/
       description: 内网穿透
   - Render:
-    - abbr: /icons/render.svg
+    - icon: /icons/render.svg
       href: https://dashboard.render.com/
       description: bark server
 
