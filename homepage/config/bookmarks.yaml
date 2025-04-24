@@ -7,17 +7,17 @@
       href: https://zp.m-team.io/index
       description: 馒头
   - Kufei:
-    - abbr: 
+    - icon: /icons/kufei.png 
       href: https://kufei.org/torrents.php
       description: 库非
   - Cafei:
-    - abbr: 
+    - icon: /icons/ptcafe.png
       href: https://ptcafe.club/torrents.php
       description: 咖啡
 
 - Management:
   - mojievpn:
-    - abbr: MJ
+    - icon: /icons/mojie.png
       href: https://mojie.me/#/dashboard
       description: VPN
   - Excahange:
@@ -35,11 +35,11 @@
 
 - Luntan:
   - Hassbian:
-    - abbr: HA
+    - icon: /icons/hassiban.png
       href: https://bbs.hassbian.com/
       description: 智能家居
   - Enshan:
-    - abbr: ES
+    - icon: /icons/enshan.png
       href: https://www.right.com.cn/forum/
       description: 软路由
   - Reddit:
