@@ -29,7 +29,7 @@
       href: https://my.zerotier.com/network/abfd31bd470eb354/
       description: 内网穿透
   - Render:
-    - abbr: BA
+    - abbr: /icons/render.svg
       href: https://dashboard.render.com/
       description: bark server
 
@@ -47,7 +47,7 @@
       href: https://reddit.com/
       description: " "
   - FrigatePlus:
-    - abbr: FR
+    - icon: /icons/frigate.png
       href: https://plus.frigate.video/dashboard/
       description: " "
 
@@ -61,7 +61,7 @@
           href: https://xlist.org/zh
           description: "AI识脸"
     - Ref:
-        - abbr: XS
+        - abbr: RF
           href: https://reference.doraemon.press/
           description: "速查手册"
     
