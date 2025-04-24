@@ -190,17 +190,17 @@ services:
       - /mnt/SDD128G/nodered/data:/data
     restart: unless-stopped
     
-  esphome:
-    image: ghcr.io/imagegenius/esphome:latest
-    container_name: esphome
-    environment:
-      - TZ=Asia/Shanghai
-      - ESPHOME_DASHBOARD_USE_PING=false #optional
-    volumes:
-      - /mnt/SDD128G/esp_home:/config
+  # esphome:
+  #   image: ghcr.io/imagegenius/esphome:latest
+  #   container_name: esphome
+  #   environment:
+  #     - TZ=Asia/Shanghai
+  #     - ESPHOME_DASHBOARD_USE_PING=false #optional
+  #   volumes:
+  #     - /mnt/SDD128G/esp_home:/config
     # ports:
     #   - 6052:6052
-    restart: unless-stopped
+    # restart: unless-stopped
     
   frigate:
     container_name: frigate
