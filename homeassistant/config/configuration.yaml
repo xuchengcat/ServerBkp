@@ -1,10 +1,31 @@
+homeassistant:
+  packages: !include_dir_named packages/
 
 # Loads default set of integrations. Do not remove.
 default_config:
 
 # Load frontend themes from the themes folder
 frontend:
+  extra_module_url:
+    - /hacsfiles/lovelace-card-mod/card-mod.js
   themes: !include_dir_merge_named themes
+
+lovelace:
+  mode: storage
+  resources:
+    - url: /hacsfiles/button-card/button-card.js
+      type: module
+    - url: /hacsfiles/lovelace-layout-card/layout-card.js
+      type: module
+    - url: /hacsfiles/swipe-card/swipe-card.js
+      type: module
+  dashboards:
+    mattias-lovelace:
+      mode: yaml
+      title: Mattias
+      icon: mdi:tablet-cellphone
+      show_in_sidebar: true
+      filename: dashboards/tablet/ui-lovelace.yaml
 
 # Text-to-speech
 tts:
@@ -33,9 +54,10 @@ switch:
     broadcast_port: 9
     turn_off: 
       service: shell_command.turn_off_connect
-
+    
 shell_command:
   turn_off_connect: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "shutdown /s /t 10"'
+  turn_on_steam: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "schtasks /run /tn \"RunSteam\""'
 
 # Example configuration.yaml entry
 input_boolean:
