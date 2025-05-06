@@ -54,10 +54,16 @@ switch:
     broadcast_port: 9
     turn_off: 
       service: shell_command.turn_off_connect
-    
+
+script:
+  open_steam:
+    alias: Open Steam Bigpicture
+    sequence:
+      - service: shell_command.turn_on_steam
+
 shell_command:
   turn_off_connect: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "shutdown /s /t 10"'
-  turn_on_steam: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "schtasks /run /tn \"RunSteam\""'
+  turn_on_steam: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "schtasks /run /tn \"MyFlow\\RunSteam\""'
 
 # Example configuration.yaml entry
 input_boolean:

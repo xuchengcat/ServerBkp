@@ -1,0 +1,15 @@
+- id: '1731569587756'
+  alias: 机柜温度报警
+  description: ''
+  triggers:
+  - trigger: numeric_state
+    entity_id:
+    - sensor.miaomiaoc_cn_blt_3_1599m5an0lo00_t2_temperature_p_2_1
+    above: 40
+  conditions: []
+  actions:
+  - action: notify.mobile_app_chengde_iphone
+    data:
+      message: 机柜温度过高,请散热
+      title: 高温警报
+  mode: single
