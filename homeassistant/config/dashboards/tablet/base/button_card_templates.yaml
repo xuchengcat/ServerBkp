@@ -243,13 +243,10 @@
   #                                               #
   #################################################
 
-base_reverse:
-  variables:
-    state: >
-      [[[ 
-        if (entity === undefined) return 'unknown';
-        return entity.state === 'on' ? 'off' : 'on'; 
-      ]]]
+  base_reverse:
+    variables:
+      state: >
+        [[[ return entity === undefined || entity.state; ]]]
       timeout: >
         [[[ return entity === undefined || Date.now() - Date.parse(entity.last_changed); ]]]
       light_color: >
@@ -261,7 +258,7 @@ base_reverse:
     show_state: true
     show_icon: false
     state_display: >
-      [[[ if (variables.state === off) return 'unknown'; ]]]
+      [[[ if (variables.state === true) return '未知'; ]]]
     tap_action:
       ui_sound_tablet: |
         [[[
@@ -2361,7 +2358,7 @@ base_reverse:
           - margin-left: 1%
           - fill: >
               [[[
-                return variables.state === 'on' ? '#616161' : '#9da0a2';
+                return variables.state === 'off' ? '#616161' : '#9da0a2';
               ]]]
     custom_fields:
       icon: >

@@ -35,13 +35,13 @@
 - NA Area:
     - Jellyfin:
         icon: si-jellyfin-#00a4dc
-        href: https://jellyfin.xuchengcat.cn
+        href: https://jellyfin.xuchengcat.cn:444
         description: 影音娱乐
         server: my-docker
         container: jellyfin_qsv
         widget:
           type: jellyfin
-          url: https://jellyfin.xuchengcat.cn
+          url: https://jellyfin.xuchengcat.cn:444
           key: 952a6776a69f4cc98849716f52a95e32
           enableNowPlaying: true
           enableBlocks: true
@@ -49,38 +49,29 @@
           expandOneStreamToTwoRows: false
     - Transmission:
         icon: si-transmission-#D70008
-        href: https://transmission.xuchengcat.cn
+        href: https://transmission.xuchengcat.cn:444
         description: 下载服务
         server: my-docker
         container: transmission
         widget:
           type: transmission
-          url: https://transmission.xuchengcat.cn
+          url: https://transmission.xuchengcat.cn:444
           username: xuau
           password: 123456
-    - NextCloud:
-        icon: si-nextcloud-#0082C9
-        href: https://nextcloud.xuchengcat.cn
-        description: 私有云服务 
-        server: my-docker
-        container: nextcloud
-        # widget:
-        #   type: nextcloud
-        #   url: https://nextcloud.xuchengcat.cn
-        #   username: xuau
-        #   password: 123456
-        #   fields: ["numfiles", "numshares"]
     - PhotoPrism:
         icon: /icons/photoprism.png
-        href: https://photoprism.xuchengcat.cn
+        href: https://photoprism.xuchengcat.cn:444
         description: 照片存储
         server: my-docker
         container: photoprism
-        # widget:
-        #   type: photoprism
-        #   username: admin
-        #   password: 123456
-        #   url: http://192.168.2.1:2342
+        widget:
+          type: photoprism
+            #username: xuau
+            #password: 123456
+          url: http://photoprism:2342
+          key: RxfNRC-Y7Rq5r-vNEtdi-8xqRDQ
+          fields: ["albums", "photos", "videos"]
+  
     # - Glances:
     #     icon: /icons/cadvisor.png
     #     href: https://glances.xuchengcat.cn
@@ -97,42 +88,53 @@
 - HA Area:
     - HomeAssistant:
         icon: si-homeassistant-#18BCF2
-        href: https://homeassistant.xuchengcat.cn
+        href: https://homeassistant.xuchengcat.cn:444
         description: 智能家居
     - EspHome:
         icon: si-esphome-#000000
-        href: https://esphome.xuchengcat.cn
+        href: https://esphome.xuchengcat.cn:444
         description: DIY
     - Nodred:
         icon: si-nodered-#8F0000
-        href: https://nodred.xuchengcat.cn
+        href: https://nodred.xuchengcat.cn:444
         description: 自动化
     - XiaoMusic:
         icon: si-xiaomi-#ff6900
-        href: https://xiaomusic.xuchengcat.cn
+        href: https://xiaomusic.xuchengcat.cn:444
         description: 自动化
     - Shinobi:
         icon: /icons/shinobi.png
-        href: https://shinobi.xuchengcat.cn/
+        href: https://shinobi.xuchengcat.cn:444
         description: 监控设置
     - Frigate:
         icon: /icons/frigate.png
-        href: https://frigate.xuchengcat.cn/
+        href: https://frigate.xuchengcat.cn:444
         description: 监控设置
+    - NextCloud:
+        icon: si-nextcloud-#0082C9
+        href: https://nextcloud.xuchengcat.cn:444
+        description: 私有云服务
+        server: my-docker
+        container: nextcloud
+        #widget:
+          #type: nextcloud
+          #url: https://nextcloud.xuchengcat.cn
+          #key: HwQu7CgKUbUJqGUNuTvFYFrRRmcLNnaYJz8KJyDjS5xaAJYKwBDCP88oJb7VSiKG
+          #fields: ["memoryusage","numfiles","numshares"]
 
 - MA Area:
     - Portainer:
         icon: si-portainer-#13BEF9
-        href: https://portainer.xuchengcat.cn
+        href: https://portainer.xuchengcat.cn:444
         description: Docker管理
     - NginxProxy:
         icon: si-nginxproxymanager-#F15833
-        href: https://nginx.xuchengcat.cn
+        href: https://nginx.xuchengcat.cn:444
         description: 反代理
     # - Bark:
     #     icon: /icons/google-messages.png
     #     abbr: BA
-    #     href: https://bark.xuchengcat.cn
+    #     href: https://bark.xuchengcat.cn:444
     #     description: ios通知服务
     - ClashConfig:
         icon: /icons/clash.png

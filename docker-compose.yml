@@ -121,10 +121,10 @@ services:
       PHOTOPRISM_SITE_AUTHOR: ""                     # meta site author
       ## Run/install on first startup (options: update https gpu tensorflow davfs clitools clean):
       # PHOTOPRISM_INIT: "https gpu tensorflow"
-      ## Hardware Video Transcoding:
-      # PHOTOPRISM_FFMPEG_ENCODER: "software"        # FFmpeg encoder ("software", "intel", "nvidia", "apple", "raspberry")
-      # PHOTOPRISM_FFMPEG_BITRATE: "32"              # FFmpeg encoding bitrate limit in Mbit/s (default: 50)
-      ## Run as a non-root user after initialization (supported: 0, 33, 50-99, 500-600, and 900-1200):
+      # Hardware Video Transcoding:
+      PHOTOPRISM_FFMPEG_ENCODER: "intel"        # FFmpeg encoder ("software", "intel", "nvidia", "apple", "raspberry")
+      PHOTOPRISM_FFMPEG_BITRATE: "32"              # FFmpeg encoding bitrate limit in Mbit/s (default: 50)
+      # Run as a non-root user after initialization (supported: 0, 33, 50-99, 500-600, and 900-1200):
       PHOTOPRISM_UID: 1000
       PHOTOPRISM_GID: 1000
       # PHOTOPRISM_UMASK: 0000
@@ -132,8 +132,8 @@ services:
     ## Start as non-root user before initialization (supported: 0, 33, 50-99, 500-600, and 900-1200):
     # user: "1000:1000"
     ## Share hardware devices with FFmpeg and TensorFlow (optional):
-    # devices:
-    #  - "/dev/dri:/dev/dri"                         # Intel QSV
+    devices:
+      - "/dev/dri:/dev/dri"                         # Intel QSV
     #  - "/dev/nvidia0:/dev/nvidia0"                 # Nvidia CUDA
     #  - "/dev/nvidiactl:/dev/nvidiactl"
     #  - "/dev/nvidia-modeset:/dev/nvidia-modeset"
@@ -162,6 +162,7 @@ services:
     volumes:
       - /mnt/SDD128G/transmission/config:/config
       - /mnt/HDD12T/Media_Data_HDD:/downloads
+      - /mnt/temp:/downloads_long
       - /mnt/SDD128G/transmission/watch:/watch
     network_mode: host
     restart: unless-stopped
@@ -221,8 +222,8 @@ services:
         target: /tmp/cache
         tmpfs:
           size: 1000000000
-    ports:
-      - "8971:8971"
+    # ports:
+      # - "8971:8971"
       # - "5000:5000" # Internal unauthenticated access. Expose carefully.
       # - "8554:8554" # RTSP feeds
       # - "8555:8555/tcp" # WebRTC over tcp
@@ -305,8 +306,8 @@ services:
       # - /mnt/HDD14T:/disk/mount/HDD14T
       - /mnt/HDD12T:/disk/mount/HDD12T
       - /var/run/docker.sock:/var/run/docker.sock:ro
-    # environment:
-    #   LOG_LEVEL: "debug"
+    environment:
+      HOMEPAGE_ALLOWED_HOSTS: xuchengcat.cn,172.0.17:3000,192.168.2.1:3000
     restart: unless-stopped
 
   iperf3:
@@ -330,8 +331,8 @@ services:
     restart: unless-stopped
     ports:
       # These ports are in format <host-port>:<container-port>
-      - '80:80' # Public HTTP Port
-      - '443:443' # Public HTTPS Port
+      - '81:80' # Public HTTP Port
+      - '444:443' # Public HTTPS Port
       # - '18081:81' # Admin Web Port
       # Add any other Stream port you want to expose
       # - '21:21' # FTP
@@ -367,6 +368,17 @@ services:
       - NET_ADMIN
       - SYS_ADMIN
     restart: unless-stopped
+
+  cloudbak:
+    image: pub.tcp.mk/likeflyme/cloudbak
+    container_name: cloudbak
+    restart: always
+    ports:
+      - 9527:9527
+    volumes:
+      - /mnt/HDD12T/Pictures/wechat:/app/data
+    environment:
+      - TZ=Asia/Shanghai
 
 networks:
   my_docker:

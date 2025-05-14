@@ -15,7 +15,7 @@ views:
         "sidebar  .                 .                 .               ."
         "sidebar  lights-control    tv-pc             other-devices   ."
         "sidebar  my-family         security-camera   media-player    ."
-        "sidebar  footer            footer            footer          ."
+        "sidebar  .                 .                 .               ."
       mediaquery:
         #phone
         "(max-width: 800px)":
@@ -28,7 +28,7 @@ views:
             ".  lights-control   other-devices      ."
             ".  tv-pc            security-camera    ."
             ".  my-family        media-player       ."
-            ".  footer           footer             ."
+            ".  .                .                  ."
             ".  .                .                  ."
         #portrait
         "(max-width: 1200px)":
@@ -40,7 +40,7 @@ views:
             "sidebar    lights-control    other-devices     ."
             "sidebar    tv-pc             security-camera   ."
             "sidebar    media-player      my-family         ."
-            "sidebar    footer            footer            ."
+            "sidebar    .                 .                 ."
             "sidebar    .                 .                 ."
     cards:
 
@@ -338,8 +338,8 @@ views:
                 cards:
 
                   - type: custom:button-card
-                    entity: sensor.m1_temperature
-                    name: 室内温度
+                    entity: sensor.miaomiaoc_cn_blt_3_16irj7it8ls00_t2_temperature_p_2_1
+                    name: 卧室温度
                     tap_action: more-info #!include popup/temperature.yaml
                     # hold_action:
                     #   action: none
@@ -347,7 +347,7 @@ views:
                       graph:
                         card:
                           entities:
-                            - sensor.m1_temperature
+                            - sensor.miaomiaoc_cn_blt_3_16irj7it8ls00_t2_temperature_p_2_1
                     template:
                       - temperature
                       - icon_temperature
@@ -355,8 +355,8 @@ views:
                       popup_name: 温度监测
 
                   - type: custom:button-card
-                    entity: sensor.m1_humidity
-                    name: 室内湿度
+                    entity: sensor.miaomiaoc_cn_blt_3_16irj7it8ls00_t2_relative_humidity_p_2_2
+                    name: 卧室湿度
                     tap_action: more-info #!include popup/temperature.yaml
                     hold_action:
                       action: none
@@ -364,7 +364,7 @@ views:
                       graph:
                         card:
                           entities:
-                            - sensor.m1_humidity
+                            - sensor.miaomiaoc_cn_blt_3_16irj7it8ls00_t2_relative_humidity_p_2_2
                     template:
                       - humidity
                       - icon_humidity
@@ -372,10 +372,10 @@ views:
                       popup_name: 湿度监测
 
                   - type: custom:button-card
-                    entity: fan.xiaomi_air_humidifier
-                    name: 加湿器
-                    hold_action: 
-                      !include base/popup/zhimi_air_humidifier.yaml
+                    entity: button.miir_cn_ir_1702342793831264256_ir01_turn_on_a_2_4
+                    name: 风扇
+                    # hold_action: 
+                    #   !include base/popup/zhimi_air_humidifier.yaml
                     template:
                       - base
                       - icon_climate
@@ -391,140 +391,140 @@ views:
                         ]]]
 
                   - type: custom:button-card
-                    entity: switch.dc1_bedroom_2
+                    entity: switch.zhimi_cn_53563380_m1_on_p_2_1
                     name: 净化器
                     template:
                       - base
                       - icon_climate
 
-              - type: grid
-                columns: 2
-                cards:
+              # - type: grid
+              #   columns: 2
+              #   cards:
 
-                  - type: custom:button-card
-                    entity: fan.xiaomi_smart_fan_bedroom
-                    name: 主卧风扇
-                    hold_action: 
-                      !include base/popup/mijia_fan2.yaml
-                    template:
-                      - base
-                      - icon_fan2
-                      - loader
-                    variables:
-                      circle_input: >
-                        [[[
-                          if (entity) {
-                            return entity.state == 'on' ?
-                              entity.attributes.percentage :
-                              entity.attributes.raw_speed;
-                          }
-                        ]]]
+              #     - type: custom:button-card
+              #       entity: fan.xiaomi_smart_fan_bedroom
+              #       name: 主卧风扇
+              #       hold_action: 
+              #         !include base/popup/mijia_fan2.yaml
+              #       template:
+              #         - base
+              #         - icon_fan2
+              #         - loader
+              #       variables:
+              #         circle_input: >
+              #           [[[
+              #             if (entity) {
+              #               return entity.state == 'on' ?
+              #                 entity.attributes.percentage :
+              #                 entity.attributes.raw_speed;
+              #             }
+              #           ]]]
 
-                  - type: custom:button-card
-                    entity: fan.xiaomi_smart_fan
-                    name: 次卧风扇
-                    hold_action: 
-                      !include base/popup/mijia_fan.yaml
-                    template:
-                      - base
-                      - icon_fan2
-                      - loader
-                    variables:
-                      circle_input: >
-                        [[[
-                          if (entity) {
-                            return entity.state == 'on' ?
-                              entity.attributes.percentage :
-                              entity.attributes.raw_speed;
-                          }
-                        ]]]
-
-
-                  - type: custom:button-card
-                    entity: fan.sonoff09
-                    name: 排气扇
-                    template:
-                      - base
-                      - icon_fan2
-                      - loader
-
-                  - type: custom:button-card
-                    entity: fan.sonoff08
-                    name: 暖风扇
-                    template:
-                      - base
-                      - icon_fan2
-                      - loader
-
-              - type: grid
-                columns: 2
-                cards:
-
-                  - type: custom:button-card
-                    entity: climate.livingroom_acpartner
-                    name: 客厅空调
-                    tap_action:
-                      !include base/popup/livingroom_climate.yaml
-                    template:
-                      - base
-                      - icon_climate
-                      - climate
-                    variables:
-                      circle_input: >
-                        [[[
-                          if (entity) {
-                            return entity.state == 'cool' ?
-                              entity.attributes.temperature :
-                              entity.attributes.current_temperature;
-                          }
-                        ]]]
+              #     - type: custom:button-card
+              #       entity: fan.xiaomi_smart_fan
+              #       name: 次卧风扇
+              #       hold_action: 
+              #         !include base/popup/mijia_fan.yaml
+              #       template:
+              #         - base
+              #         - icon_fan2
+              #         - loader
+              #       variables:
+              #         circle_input: >
+              #           [[[
+              #             if (entity) {
+              #               return entity.state == 'on' ?
+              #                 entity.attributes.percentage :
+              #                 entity.attributes.raw_speed;
+              #             }
+              #           ]]]
 
 
-                  - type: custom:button-card
-                    entity: climate.studyroom_acpartner
-                    name: 次卧空调
-                    tap_action:
-                      !include base/popup/climate.yaml
-                    template:
-                      - base
-                      - icon_climate
-                      - climate
-                    variables:
-                      circle_input: >
-                        [[[
-                          if (entity) {
-                            return entity.state == 'cool' ?
-                              entity.attributes.temperature :
-                              entity.attributes.current_temperature;
-                          }
-                        ]]]
+              #     - type: custom:button-card
+              #       entity: fan.sonoff09
+              #       name: 排气扇
+              #       template:
+              #         - base
+              #         - icon_fan2
+              #         - loader
 
-                  - type: custom:button-card
-                    entity: cover.livingroom
-                    name: 客厅窗帘
-                    tap_action: more-info
-                    template:
-                      - icon_cover #icon_curtains_combined
-                      - base
-                      - circle
-                    variables:
-                      circle_input: >
-                        [[[
-                          if (entity) {
-                            return entity.state == 'on' ?
-                              entity.attributes.current_position :
-                              entity.attributes.current_position;
-                          }
-                        ]]]
+              #     - type: custom:button-card
+              #       entity: fan.sonoff08
+              #       name: 暖风扇
+              #       template:
+              #         - base
+              #         - icon_fan2
+              #         - loader
 
-                  - type: custom:button-card
-                    entity: cover.bedroom
-                    name: 主卧窗帘
-                    tap_action: more-info
-                    template:
-                      - icon_cover #icon_curtains_combined
-                      - base
-                      - circle
+              # - type: grid
+              #   columns: 2
+              #   cards:
+
+              #     - type: custom:button-card
+              #       entity: climate.livingroom_acpartner
+              #       name: 客厅空调
+              #       tap_action:
+              #         !include base/popup/livingroom_climate.yaml
+              #       template:
+              #         - base
+              #         - icon_climate
+              #         - climate
+              #       variables:
+              #         circle_input: >
+              #           [[[
+              #             if (entity) {
+              #               return entity.state == 'cool' ?
+              #                 entity.attributes.temperature :
+              #                 entity.attributes.current_temperature;
+              #             }
+              #           ]]]
+
+
+              #     - type: custom:button-card
+              #       entity: climate.studyroom_acpartner
+              #       name: 次卧空调
+              #       tap_action:
+              #         !include base/popup/climate.yaml
+              #       template:
+              #         - base
+              #         - icon_climate
+              #         - climate
+              #       variables:
+              #         circle_input: >
+              #           [[[
+              #             if (entity) {
+              #               return entity.state == 'cool' ?
+              #                 entity.attributes.temperature :
+              #                 entity.attributes.current_temperature;
+              #             }
+              #           ]]]
+
+              #     - type: custom:button-card
+              #       entity: cover.livingroom
+              #       name: 客厅窗帘
+              #       tap_action: more-info
+              #       template:
+              #         - icon_cover #icon_curtains_combined
+              #         - base
+              #         - circle
+              #       variables:
+              #         circle_input: >
+              #           [[[
+              #             if (entity) {
+              #               return entity.state == 'on' ?
+              #                 entity.attributes.current_position :
+              #                 entity.attributes.current_position;
+              #             }
+              #           ]]]
+
+              #     - type: custom:button-card
+              #       entity: cover.bedroom
+              #       name: 主卧窗帘
+              #       tap_action: more-info
+              #       template:
+              #         - icon_cover #icon_curtains_combined
+              #         - base
+              #         - circle
 
                   # - type: custom:button-card
                   #   entity: switch.dc1_bedroom_2
@@ -567,95 +567,91 @@ views:
               - type: horizontal-stack
                 cards:
 
-                  - type: conditional
-                    conditions:
-                      - entity: sensor.harmony_activity
-                        state: "PowerOff"
-                    card:
-                      type: custom:button-card
-                      entity: sensor.plex_recently_added_tv
-                      tap_action:
-                        action: none
-                      template:
-                        - conditional_media
-                        - recently_downloaded
-                        - icon_plex
-
-                  - type: conditional
-                    conditions:
-                      - entity: sensor.harmony_activity
-                        state: "LivingroomAppleTV"
-                    card:
-                      type: custom:button-card
-                      entity: media_player.appletv
-                      template:
-                        - conditional_media
-                        - icon_apple_tv
-
-                  - type: conditional
-                    conditions:
-                      - entity: sensor.harmony_activity
-                        state: "LivingroomGoogleTV"
-                    card:
-                      type: custom:button-card
-                      entity: media_player.livingroom_androidtv
-                      template:
-                        - conditional_media
-                        - icon_android_tv
-
-                  - type: conditional
-                    conditions:
-                      - entity: sensor.harmony_activity
-                        state: "LivingroomOppoPlayer"
-                    card:
-                      type: custom:button-card
-                      entity: media_player.spotify_potato
-                      template:
-                        - conditional_media
-                        - icon_spotify
-
-                  - type: conditional
-                    conditions:
-                      - entity: sensor.harmony_activity
-                        state: "LivingroomGames"
-                    card:
-                      type: custom:button-card
-                      entity: media_player.ci_wo_chromecast
-                      template:
-                        - conditional_media
-                        - icon_nest_mini
-
-              - type: grid
-                columns: 2
-                cards:
-
                   - type: custom:button-card
-                    entity: media_player.appletv
-                    name: AppleTv
+                    entity: switch.xuaugame
+                    name: 客厅电脑
+                    # hold_action:
+                    #   !include base/popup/xbox.yaml
                     template:
-                      - media
-                      - icon_apple_tv
+                      - base
+                      - icon_imac
+                      - loader
 
-                  - type: custom:button-card
-                    name: ShieldTv
-                    entity: media_player.livingroom_androidtv
-                    template:
-                      - media
-                      - icon_android_tv
+              #     - type: conditional
+              #       conditions:
+              #         - entity: sensor.harmony_activity
+              #           state: "LivingroomAppleTV"
+              #       card:
+              #         type: custom:button-card
+              #         entity: media_player.appletv
+              #         template:
+              #           - conditional_media
+              #           - icon_apple_tv
 
-                  - type: custom:button-card
-                    entity: media_player.spotify_potato
-                    name: Spotify
-                    template:
-                      - media
-                      - icon_spotify
+              #     - type: conditional
+              #       conditions:
+              #         - entity: sensor.harmony_activity
+              #           state: "LivingroomGoogleTV"
+              #       card:
+              #         type: custom:button-card
+              #         entity: media_player.livingroom_androidtv
+              #         template:
+              #           - conditional_media
+              #           - icon_android_tv
 
-                  - type: custom:button-card
-                    entity: media_player.ci_wo_chromecast
-                    name: Mini
-                    template:
-                      - media
-                      - icon_nest_mini
+              #     - type: conditional
+              #       conditions:
+              #         - entity: sensor.harmony_activity
+              #           state: "LivingroomOppoPlayer"
+              #       card:
+              #         type: custom:button-card
+              #         entity: media_player.spotify_potato
+              #         template:
+              #           - conditional_media
+              #           - icon_spotify
+
+              #     - type: conditional
+              #       conditions:
+              #         - entity: sensor.harmony_activity
+              #           state: "LivingroomGames"
+              #       card:
+              #         type: custom:button-card
+              #         entity: media_player.ci_wo_chromecast
+              #         template:
+              #           - conditional_media
+              #           - icon_nest_mini
+
+              # - type: grid
+              #   columns: 2
+              #   cards:
+
+              #     - type: custom:button-card
+              #       entity: media_player.appletv
+              #       name: AppleTv
+              #       template:
+              #         - media
+              #         - icon_apple_tv
+
+              #     - type: custom:button-card
+              #       name: ShieldTv
+              #       entity: media_player.livingroom_androidtv
+              #       template:
+              #         - media
+              #         - icon_android_tv
+
+              #     - type: custom:button-card
+              #       entity: media_player.spotify_potato
+              #       name: Spotify
+              #       template:
+              #         - media
+              #         - icon_spotify
+
+              #     - type: custom:button-card
+              #       entity: media_player.ci_wo_chromecast
+              #       name: Mini
+              #       template:
+              #         - media
+              #         - icon_nest_mini
 
       #################################################
       #                                               #
@@ -663,51 +659,51 @@ views:
       #                                               #
       #################################################
 
-      - type: grid
-        title: 安全
-        view_layout:
-          grid-area: security-camera
-        columns: 2
-        cards:
+      # - type: grid
+      #   title: 安全
+      #   view_layout:
+      #     grid-area: security-camera
+      #   columns: 2
+        # cards:
 
-          - type: custom:button-card
-            entity: binary_sensor.f282d3f14eb6_lock
-            name: 入户门锁
-            tap_action:
-              !include base/popup/outdoor.yaml
-            template:
-              - base
-              - icon_closet
+        #   - type: custom:button-card
+        #     entity: binary_sensor.f282d3f14eb6_lock
+        #     name: 入户门锁
+        #     tap_action:
+        #       !include base/popup/outdoor.yaml
+        #     template:
+        #       - base
+        #       - icon_closet
 
-          - type: custom:button-card
-            entity: group.all_motion_sensor_entities
-            name: 活动检测
-            tap_action:
-              !include base/popup/motion_sensor.yaml
-            hold_action:
-              !include base/popup/motion_sensor.yaml
-            template:
-              - base
-              - icon_motion
+        #   - type: custom:button-card
+        #     entity: group.all_motion_sensor_entities
+        #     name: 活动检测
+        #     tap_action:
+        #       !include base/popup/motion_sensor.yaml
+        #     hold_action:
+        #       !include base/popup/motion_sensor.yaml
+        #     template:
+        #       - base
+        #       - icon_motion
 
-          - type: custom:button-card
-            entity: camera.hikvisioncam_door
-            name: 视频监控
-            # tap_action:
-              # !include base/popup/cameras.yaml
-            template:
-              - base
-              - icon_webcam
+        #   - type: custom:button-card
+        #     entity: camera.hikvisioncam_door
+        #     name: 视频监控
+        #     # tap_action:
+        #       # !include base/popup/cameras.yaml
+        #     template:
+        #       - base
+        #       - icon_webcam
 
-          - type: custom:button-card
-            entity: binary_sensor.smoke_sensor_158d0002cb5a00
-            name: 厨房监测
-            tap_action:
-              !include base/popup/water.yaml
-            template:
-              - base
-              - icon_fire
-              - light
+        #   - type: custom:button-card
+        #     entity: binary_sensor.smoke_sensor_158d0002cb5a00
+        #     name: 厨房监测
+        #     tap_action:
+        #       !include base/popup/water.yaml
+        #     template:
+        #       - base
+        #       - icon_fire
+        #       - light
 
       #################################################
       #                                               #
@@ -723,8 +719,8 @@ views:
         cards:
 
           - type: custom:button-card
-            entity: person.tudou
-            name: 我
+            entity: device_tracker.xuau_iphone
+            name: Xu Au
             tap_action:
               !include base/popup/person_1.yaml
             hold_action:
@@ -732,31 +728,31 @@ views:
             template: person
 
           - type: custom:button-card
-            entity: person.laopo
-            name: 妈妈
+            entity: device_tracker.hanhuohuo_iphone
+            name: 韩火火
             # tap_action:
             #   !include base/popup/person_2.yaml
             hold_action:
               action: none
             template: person
 
-          - type: custom:button-card
-            entity: person.erzi
-            name: 儿子
-            # tap_action:
-            #   !include base/popup/person_3.yaml
-            hold_action:
-              action: none
-            template: person
+          # - type: custom:button-card
+          #   entity: person.erzi
+          #   name: 儿子
+          #   # tap_action:
+          #   #   !include base/popup/person_3.yaml
+          #   hold_action:
+          #     action: none
+          #   template: person
 
-          - type: custom:button-card
-            entity: person.car
-            name: 汽车
-            # tap_action:
-            #   !include base/popup/person_4.yaml
-            hold_action:
-              action: none
-            template: person
+          # - type: custom:button-card
+          #   entity: person.car
+          #   name: 汽车
+          #   # tap_action:
+          #   #   !include base/popup/person_4.yaml
+          #   hold_action:
+          #     action: none
+          #   template: person
 
       #################################################
       #                                               #
@@ -764,9 +760,9 @@ views:
       #                                               #
       #################################################
 
-      - type: custom:button-card
-        view_layout:
-          grid-area: footer
-        entity: sensor.bvid_id
-        template: bilibili
+      # - type: custom:button-card
+      #   view_layout:
+      #     grid-area: footer
+      #   entity: sensor.bvid_id
+      #   template: bilibili
 

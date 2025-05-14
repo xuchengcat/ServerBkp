@@ -12,13 +12,15 @@ frontend:
 
 lovelace:
   mode: storage
-  resources:
-    - url: /hacsfiles/button-card/button-card.js
-      type: module
-    - url: /hacsfiles/lovelace-layout-card/layout-card.js
-      type: module
-    - url: /hacsfiles/swipe-card/swipe-card.js
-      type: module
+    #resources:
+    # - url: /hacsfiles/button-card/button-card.js
+    #  type: module
+    #- url: /hacsfiles/lovelace-layout-card/layout-card.js
+    #  type: module
+    #- url: /hacsfiles/swipe-card/swipe-card.js
+    #  type: module
+    #- url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
+    #  type: module
   dashboards:
     mattias-lovelace:
       mode: yaml
@@ -81,3 +83,17 @@ input_select:
       - "白天"
     initial: "起床"
     icon: "mdi:home-automation"
+
+input_number:
+  disk_temp_sdc:
+    name: sdc温度
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "°C"
+  disk_temp_sdb:
+    name: sdb温度
+    min: 0
+    max: 100
+    step: 1
+    unit_of_measurement: "°C"
