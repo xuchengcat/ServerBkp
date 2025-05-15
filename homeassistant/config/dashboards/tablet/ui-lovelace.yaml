@@ -719,7 +719,7 @@ views:
         cards:
 
           - type: custom:button-card
-            entity: device_tracker.xuau_iphone
+            entity: person.xuau
             name: Xu Au
             tap_action:
               !include base/popup/person_1.yaml
@@ -728,7 +728,7 @@ views:
             template: person
 
           - type: custom:button-card
-            entity: device_tracker.hanhuohuo_iphone
+            entity: person.han_huohuo
             name: 韩火火
             # tap_action:
             #   !include base/popup/person_2.yaml
