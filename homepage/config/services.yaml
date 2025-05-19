@@ -90,6 +90,8 @@
         icon: si-homeassistant-#18BCF2
         href: https://homeassistant.xuchengcat.cn:444
         description: 智能家居
+        server: my-docker
+        container: homeassistant
     - EspHome:
         icon: si-esphome-#000000
         href: https://esphome.xuchengcat.cn:444
@@ -98,10 +100,14 @@
         icon: si-nodered-#8F0000
         href: https://nodred.xuchengcat.cn:444
         description: 自动化
+        server: my-docker
+        container: Node_Red
     - XiaoMusic:
         icon: si-xiaomi-#ff6900
         href: https://xiaomusic.xuchengcat.cn:444
         description: 自动化
+        server: my-docker
+        container: xiaomusic
     - Shinobi:
         icon: /icons/shinobi.png
         href: https://shinobi.xuchengcat.cn:444
@@ -110,6 +116,8 @@
         icon: /icons/frigate.png
         href: https://frigate.xuchengcat.cn:444
         description: 监控设置
+        server: my-docker
+        container: frigate
     - NextCloud:
         icon: si-nextcloud-#0082C9
         href: https://nextcloud.xuchengcat.cn:444
@@ -122,15 +130,26 @@
           #key: HwQu7CgKUbUJqGUNuTvFYFrRRmcLNnaYJz8KJyDjS5xaAJYKwBDCP88oJb7VSiKG
           #fields: ["memoryusage","numfiles","numshares"]
 
+    - Wechat:
+        icon: si-wechat-#07C160
+        href: https://wechat.xuchengcat.cn:444
+        description: 微信备份
+        server: my-docker
+        container: cloudbak
+
 - MA Area:
     - Portainer:
         icon: si-portainer-#13BEF9
         href: https://portainer.xuchengcat.cn:444
         description: Docker管理
+        server: my-docker
+        container: portainer
     - NginxProxy:
         icon: si-nginxproxymanager-#F15833
         href: https://nginx.xuchengcat.cn:444
         description: 反代理
+        server: my-docker
+        container: nginx-proxy-manager
     # - Bark:
     #     icon: /icons/google-messages.png
     #     abbr: BA

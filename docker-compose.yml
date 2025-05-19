@@ -376,7 +376,7 @@ services:
     ports:
       - 9527:9527
     volumes:
-      - /mnt/HDD12T/Pictures/wechat:/app/data
+      - /mnt/HDD12T/wechat:/app/data
     environment:
       - TZ=Asia/Shanghai
 

@@ -22,14 +22,14 @@
       description: VPN
   - Excahange:
     - abbr: EX
-      href: https://exchange.xuchengcat.cn
+      href: https://exchange.xuchengcat.cn:444
       description: 交换机
   - ZeroTier:
     - icon: /icons/zerotier.png
       href: https://my.zerotier.com/network/abfd31bd470eb354/
       description: 内网穿透
   - Render:
-    - icon: /icons/render.svg
+    - icon: /icons/render.png
       href: https://dashboard.render.com/
       description: bark server
 
