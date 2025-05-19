@@ -10,6 +10,7 @@ excludefile="./exclude.txt"
 backup_ubuntu="/"
 backup_sdd128="/mnt/SDD128G"
 backup_photos="/mnt/HDD12T/Pictures"
+backup_wechat="/mnt/HDD12T/wechat"
 
 # Set a common destination for all backups
 common_dest="/mnt/HDD14T/commonbkp"
@@ -68,6 +69,7 @@ backup() {
 backup "$backup_ubuntu" "$common_dest" "Ubuntubkp-$hostname" "$excludefile"
 backup "$backup_photos" "$common_dest" "Photosbkp-$hostname" ""
 backup "$backup_sdd128" "$common_dest" "Sdd128bkp-$hostname" ""
+backup "$backup_wechat" "$common_dest" "wechat-$hostname" ""
 
 # List all files in common_dest and store in a variable
 files_list=$(ls "$common_dest" | tr '\n' ',')
