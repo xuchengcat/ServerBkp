@@ -79,6 +79,8 @@ services:
       OVERWRITECONDADDR: '^192\.[0-9]+\.[0-9]+\.[0-9]+$'
       TRUSTED_PROXIES: '192.168.0.0/16'
       TRUSTED_DOMAINS: 'nextcloud.xuchengcat.cn'
+    cpus: 0.5
+    mem_limit: 4g
 
   photoprism:
     container_name: photoprism
@@ -190,7 +192,9 @@ services:
     volumes:
       - /mnt/SDD128G/nodered/data:/data
     restart: unless-stopped
-    
+    cpus: 0.5
+    mem_limit: 4g
+
   # esphome:
   #   image: ghcr.io/imagegenius/esphome:latest
   #   container_name: esphome
@@ -230,6 +234,8 @@ services:
       # - "8555:8555/udp" # WebRTC over udp
     environment:
       - PLUS_API_KEY=93a7661b-aab9-4c20-94be-e9ec6c53029a:3c358977e302950122f6881e0ee2d03331ed9529
+    cpus: 1
+    mem_limit: 4g
 
   # shinobi:
     # build:
@@ -309,6 +315,8 @@ services:
     environment:
       HOMEPAGE_ALLOWED_HOSTS: xuchengcat.cn,172.0.17:3000,192.168.2.1:3000
     restart: unless-stopped
+    cpus: 0.5
+    mem_limit: 4g
 
   iperf3:
     image: sk278/iperf3:latest
