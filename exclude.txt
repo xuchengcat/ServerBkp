@@ -12,3 +12,4 @@
 /home/*/.cache
 /home/*/.local/share/Trash
 /home/xuau
+/var/lib/docker/overlay2
