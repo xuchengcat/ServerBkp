@@ -153,7 +153,7 @@ services:
       - "/mnt/SDD128G/photoprism/storage:/photoprism/storage"                  # *Writable* storage folder for cache, database, and sidecar files (DO NOT REMOVE)
 
   transmission:
-    image: lscr.io/linuxserver/transmission:latest
+    image: lscr.io/linuxserver/transmission:4.0.5
     container_name: transmission
     environment:
       - PUID=1000

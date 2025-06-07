@@ -6,6 +6,10 @@
     - icon: /icons/mteam.png
       href: https://zp.m-team.io/index
       description: 馒头
+  - Dicmusic:
+    - icon: /icons/haitun.png
+      href: https://dicmusic.com/torrents.php
+      description: 海豚
   - Kufei:
     - icon: /icons/kufei.png 
       href: https://kufei.org/torrents.php

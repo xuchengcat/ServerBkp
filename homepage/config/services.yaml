@@ -41,7 +41,7 @@
         container: jellyfin_qsv
         widget:
           type: jellyfin
-          url: https://jellyfin.xuchengcat.cn:444
+          url: http://jellyfin:8096
           key: 952a6776a69f4cc98849716f52a95e32
           enableNowPlaying: true
           enableBlocks: true
@@ -55,7 +55,7 @@
         container: transmission
         widget:
           type: transmission
-          url: https://transmission.xuchengcat.cn:444
+          url: http://172.17.0.1:9091
           username: xuau
           password: 123456
     - PhotoPrism:
@@ -85,13 +85,18 @@
     #       metric: sensor:Package id 0
     #       chart: false
 
-- HA Area:
+# - HA Area:
     - HomeAssistant:
         icon: si-homeassistant-#18BCF2
         href: https://homeassistant.xuchengcat.cn:444
         description: 智能家居
         server: my-docker
         container: homeassistant
+        widget:
+          type: homeassistant
+          url: http://172.17.0.1:8123
+          key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiIwOWY0YjRlNzU4Yjg0ZWQ5YTFhMzgxMjZkMDAwM2U1MyIsImlhdCI6MTc0NzAzNzE5OSwiZXhwIjoyMDYyMzk3MTk5fQ.uXp09j04-TV3ueksbBWG9ZntX-svP_fJXLeC-21E4nw"
+          fields: ["people_home", "lights_on", "switches_on"]
     - EspHome:
         icon: si-esphome-#000000
         href: https://esphome.xuchengcat.cn:444
@@ -137,7 +142,7 @@
         server: my-docker
         container: cloudbak
 
-- MA Area:
+# - MA Area:
     - Portainer:
         icon: si-portainer-#13BEF9
         href: https://portainer.xuchengcat.cn:444
@@ -157,5 +162,5 @@
     #     description: ios通知服务
     - ClashConfig:
         icon: /icons/clash.png
-        href: http://192.168.2.1:9999/ui/#/
+        href: http://xuchengcat.cn:9999/ui/#/
         description: 机场配置
