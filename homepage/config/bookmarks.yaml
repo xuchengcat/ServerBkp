@@ -10,14 +10,14 @@
     - icon: /icons/haitun.png
       href: https://dicmusic.com/torrents.php
       description: 海豚
-  - Kufei:
-    - icon: /icons/kufei.png 
-      href: https://kufei.org/torrents.php
-      description: 库非
-  - Cafei:
-    - icon: /icons/ptcafe.png
-      href: https://ptcafe.club/torrents.php
-      description: 咖啡
+        #- Kufei:
+        #- icon: /icons/kufei.png 
+        #href: https://kufei.org/torrents.php
+        #description: 库非
+        #- Cafei:
+        #- icon: /icons/ptcafe.png
+        #href: https://ptcafe.club/torrents.php
+        #description: 咖啡
 
 - Management:
   - mojievpn:
