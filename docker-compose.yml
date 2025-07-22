@@ -3,8 +3,8 @@ services:
   jellyfin:
     container_name: jellyfin_qsv
     image: nyanmisaka/jellyfin:latest
-    # ports:
-    #   - 8096:8096
+    ports:
+      - 8096:8096
     #   - 8920:8920
     #   - 1900:1900
     #   - 7359:7359
@@ -13,15 +13,15 @@ services:
     volumes:
       - /mnt/SDD128G/jellyfin/config:/config
       - /mnt/SDD128G/jellyfin/cache:/cache
-      - /mnt/HDD12T/Media_Data_HDD/Movies:/media
-      - /mnt/HDD12T/Media_Data_HDD/Teleplay:/media_TV
-      - /mnt/HDD12T/Media_Data_HDD/Merry:/media_Merry
-      - /mnt/HDD12T/Media_Data_HDD/YangJu:/media_YangJu
-      - /mnt/HDD12T/Media_Data_HDD/Cartoon:/media_Cartoon 
-      - /mnt/HDD12T/Media_Data_HDD/Missav:/media_AV 
-      - /mnt/HDD12T/Media_Data_HDD/Music:/music 
-      - /mnt/HDD12T/Media_Data_HDD/Books:/book 
-      - /mnt/HDD12T/Media_Data_HDD/BookMp3:/bookmp3 
+      - /mnt/HDD14T/Media_Data_HDD/Movies:/media
+      - /mnt/HDD14T/Media_Data_HDD/Teleplay:/media_TV
+      - /mnt/HDD14T/Media_Data_HDD/Merry:/media_Merry
+      - /mnt/HDD14T/Media_Data_HDD/YangJu:/media_YangJu
+      - /mnt/HDD14T/Media_Data_HDD/Cartoon:/media_Cartoon 
+      - /mnt/HDD14T/Media_Data_HDD/Missav:/media_AV 
+      - /mnt/HDD14T/Media_Data_HDD/Music:/music 
+      - /mnt/HDD14T/Media_Data_HDD/Books:/book 
+      - /mnt/HDD14T/Media_Data_HDD/BookMp3:/bookmp3 
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
     restart: 'unless-stopped'
@@ -47,7 +47,7 @@ services:
     ports:
       - 18090:18090
     volumes:
-      - /mnt/HDD12T/Media_Data_HDD/Music:/app/music
+      - /mnt/HDD14T/Media_Data_HDD/Music:/app/music
       - /mnt/SDD128G/xiaomusic/conf:/app/conf
     environment:
       XIAOMUSIC_PUBLIC_PORT: 18090
@@ -62,7 +62,7 @@ services:
     environment:
       - TZ=Asia/Shanghai
     volumes:
-      - /mnt/HDD12T/Media_Data_HDD/Music:/music:ro
+      - /mnt/HDD14T/Media_Data_HDD/Music:/music:ro
     restart: unless-stopped
 
   metatube:
@@ -157,9 +157,9 @@ services:
     ## Storage Folders: "~" is a shortcut for your home directory, "." for the current directory
     volumes:
       # "/host/folder:/photoprism/folder"                # Example
-      - "/mnt/HDD12T/Pictures:/photoprism/originals"               # Original media files (DO NOT REMOVE)
+      - "/mnt/HDD14T/Pictures:/photoprism/originals"               # Original media files (DO NOT REMOVE)
       # - "/example/family:/photoprism/originals/family" # *Additional* media folders can be mounted like this
-      - "/mnt/HDD12T/Pictures/import:/photoprism/import"                  # *Optional* base folder from which files can be imported to originals
+      - "/mnt/HDD14T/Pictures/import:/photoprism/import"                  # *Optional* base folder from which files can be imported to originals
       - "/mnt/SDD128G/photoprism/storage:/photoprism/storage"                  # *Writable* storage folder for cache, database, and sidecar files (DO NOT REMOVE)
 
   transmission:
@@ -173,7 +173,7 @@ services:
       - PASS=123456
     volumes:
       - /mnt/SDD128G/transmission/config:/config
-      - /mnt/HDD12T/Media_Data_HDD:/downloads
+      - /mnt/HDD14T/Media_Data_HDD:/downloads
       - /mnt/temp:/downloads_long
       - /mnt/SDD128G/transmission/watch:/watch
     network_mode: host
@@ -303,8 +303,8 @@ services:
       - /mnt/SDD128G/homepage/glances_conf:/glances/conf
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
       - "/run/user/1000/podman/podman.sock:/run/user/1000/podman/podman.sock:ro"
+      #- /mnt/HDD14T:/mnt/HDD14T
       - /mnt/HDD14T:/mnt/HDD14T
-      - /mnt/HDD12T:/mnt/HDD12T
       - /mnt/camera1t:/mnt/camera1t
     environment:
       - TZ=Asia/Shanghai
@@ -320,7 +320,7 @@ services:
       - /mnt/SDD128G/homepage/config:/app/config
       - /mnt/SDD128G/homepage/icons:/app/public/icons
       # - /mnt/HDD14T:/disk/mount/HDD14T
-      - /mnt/HDD12T:/disk/mount/HDD12T
+      - /mnt/HDD14T:/disk/mount/HDD14T
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       HOMEPAGE_ALLOWED_HOSTS: xuchengcat.cn,172.0.17:3000,192.168.2.1:3000
@@ -394,7 +394,7 @@ services:
     ports:
       - 9527:9527
     volumes:
-      - /mnt/HDD12T/wechat:/app/data
+      - /mnt/HDD14T/wechat:/app/data
     environment:
       - TZ=Asia/Shanghai
 

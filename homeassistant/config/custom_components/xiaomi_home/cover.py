@@ -46,8 +46,9 @@ off Xiaomi or its affiliates' products.
 Cover entities for Xiaomi Home.
 """
 from __future__ import annotations
-import logging
 from typing import Any, Optional
+import re
+import logging
 
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
@@ -90,6 +91,7 @@ async def async_setup_entry(hass: HomeAssistant, config_entry: ConfigEntry,
 class Cover(MIoTServiceEntity, CoverEntity):
     """Cover entities for Xiaomi Home."""
     # pylint: disable=unused-argument
+    _cover_closed_position: int
     _prop_motor_control: Optional[MIoTSpecProperty]
     _prop_motor_value_open: Optional[int]
     _prop_motor_value_close: Optional[int]
@@ -97,7 +99,6 @@ class Cover(MIoTServiceEntity, CoverEntity):
     _prop_status: Optional[MIoTSpecProperty]
     _prop_status_opening: Optional[list[int]]
     _prop_status_closing: Optional[list[int]]
-    _prop_status_stop: Optional[list[int]]
     _prop_status_closed: Optional[list[int]]
     _prop_current_position: Optional[MIoTSpecProperty]
     _prop_target_position: Optional[MIoTSpecProperty]
@@ -115,6 +116,9 @@ class Cover(MIoTServiceEntity, CoverEntity):
         self._attr_supported_color_modes = set()
         self._attr_supported_features = CoverEntityFeature(0)
 
+        self._cover_closed_position = (
+            miot_device.miot_client.cover_closed_position)
+
         self._prop_motor_control = None
         self._prop_motor_value_open = None
         self._prop_motor_value_close = None
@@ -122,7 +126,6 @@ class Cover(MIoTServiceEntity, CoverEntity):
         self._prop_status = None
         self._prop_status_opening = []
         self._prop_status_closing = []
-        self._prop_status_stop = []
         self._prop_status_closed = []
         self._prop_current_position = None
         self._prop_target_position = None
@@ -159,13 +162,22 @@ class Cover(MIoTServiceEntity, CoverEntity):
                                   self.entity_id)
                     continue
                 for item in prop.value_list.items:
-                    if item.name in {'opening', 'open', 'up'}:
+                    item_str: str = item.name
+                    item_name: str = re.sub(r'[^a-z]', '', item_str)
+                    if item_name in {
+                            'opening', 'open', 'up', 'uping', 'rise', 'rising'
+                    }:
                         self._prop_status_opening.append(item.value)
-                    elif item.name in {'closing', 'close', 'down', 'dowm'}:
+                    elif item_name in {
+                            'closing', 'close', 'down', 'dowm', 'falling',
+                            'fallin', 'dropping', 'downing', 'lower'
+                    }:
                         self._prop_status_closing.append(item.value)
-                    elif item.name in {'stop', 'stopped', 'pause'}:
-                        self._prop_status_stop.append(item.value)
-                    elif item.name in {'closed'}:
+                    elif item_name in {
+                            'closed', 'closeover', 'stopatlowest',
+                            'stoplowerlimit', 'lowerlimitstop', 'floor',
+                            'lowerlimit'
+                    }:
                         self._prop_status_closed.append(item.value)
                 self._prop_status = prop
             elif prop.name == 'current-position':
@@ -290,7 +302,7 @@ class Cover(MIoTServiceEntity, CoverEntity):
     def is_closed(self) -> Optional[bool]:
         """Return if the cover is closed."""
         if self.current_cover_position is not None:
-            return self.current_cover_position == 0
+            return self.current_cover_position <= self._cover_closed_position
         # The current position is prior to the status when determining
         # whether the cover is closed.
         if self._prop_status and self._prop_status_closed:

@@ -9,11 +9,11 @@ excludefile="./exclude.txt"
 
 backup_ubuntu="/"
 backup_sdd128="/mnt/SDD128G"
-backup_photos="/mnt/HDD12T/Pictures"
-backup_wechat="/mnt/HDD12T/wechat"
+backup_photos="/mnt/HDD14T/Pictures"
+backup_wechat="/mnt/HDD14T/wechat"
 
 # Set a common destination for all backups
-common_dest="/mnt/HDD14T/commonbkp"
+common_dest="/mnt/camera1t/commonbkp"
 
 BARK_SERVER="xuau-bark-server.onrender.com"
 BARK_TOKEN="iphone" # my device token

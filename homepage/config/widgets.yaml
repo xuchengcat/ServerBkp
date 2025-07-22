@@ -10,9 +10,7 @@
     cputemp: true
     # uptime: true
     disk:
-      # - /etc/hosts
-      # - /mnt/HDD14T
-      - /mnt/HDD12T
+      - /mnt/HDD14T
       - /mnt/camera1t
     #expanded: true
     
