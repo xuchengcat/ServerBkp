@@ -160,6 +160,10 @@
         description: 反代理
         server: my-docker
         container: nginx-proxy-manager
+    - Sshwifty:
+        icon: si-Zsh-#F15A24
+        href: https://ssh.xuchengcat.cn:444
+        description: 网页版ssh
     # - Bark:
     #     icon: /icons/google-messages.png
     #     abbr: BA
