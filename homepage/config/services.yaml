@@ -161,7 +161,7 @@
         server: my-docker
         container: nginx-proxy-manager
     - Sshwifty:
-        icon: si-zsh-#F15A24
+        icon: si-Zsh-#F15A24
         href: https://ssh.xuchengcat.cn:444
         description: 网页版ssh
     # - Bark:
