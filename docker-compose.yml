@@ -78,17 +78,17 @@ services:
     container_name: nextcloud
     image: nextcloud:apache
     restart: unless-stopped
-    # ports: 
-    #   - 8080:80
+    ports: 
+      - 8080:80
     volumes:
       - /mnt/HDD14T/mariadb_data:/var/lib/mysql
       - /mnt/HDD14T/nextcloud_data:/var/www/html/data
       - /mnt/SDD128G/nextcloud:/var/www/html
     environment:
       OVERWRITEPROTOCOL: 'https'
-      OVERWRITECONDADDR: '^192\.[0-9]+\.[0-9]+\.[0-9]+$'
-      TRUSTED_PROXIES: '192.168.0.0/16'
-      TRUSTED_DOMAINS: 'nextcloud.xuchengcat.cn'
+      OVERWRITECONDADDR: '^[0-9]+\.[0-9]+\.[0-9]+.\[0-9]+$'
+      TRUSTED_PROXIES: '172.18.0.8'
+      TRUSTED_DOMAINS: 'nextcloud.xuchengcat.cn:444'
     cpus: 0.5
     mem_limit: 4g
 
@@ -191,7 +191,20 @@ services:
     restart: unless-stopped
     privileged: true
     network_mode: host
-  
+ 
+  mosquitto:
+    image: eclipse-mosquitto:latest
+    container_name: mosquitto
+    restart: unless-stopped
+    environment:
+      - TZ=Asia/Shanghai
+    ports:
+      - 1883:1883
+      - 9001:9001
+    volumes:
+      - /mnt/SDD128G/mqtt/config:/mosquitto/config
+      - /mnt/SDD128G/mqtt/data:/mosquitto/data
+
   node-red:
     container_name: Node_Red
     image: nodered/node-red:latest
