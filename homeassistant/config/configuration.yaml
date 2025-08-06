@@ -29,6 +29,9 @@ lovelace:
       show_in_sidebar: true
       filename: dashboards/tablet/ui-lovelace.yaml
 
+mqtt:
+  broker:127.0.0.1
+
 # Text-to-speech
 tts:
   - platform: google_translate
@@ -41,10 +44,10 @@ http:
     - 192.168.192.0/24
     - 172.16.0.0/12
 
-automation: !include automations.yaml
-script: !include scripts.yaml
-scene: !include scenes.yaml
-sensor: !include custom_sensors.yaml
+!include automations.yaml
+!include scripts.yaml
+!include scenes.yaml
+!include custom_sensors.yaml
 
 #WOL Button
 switch:

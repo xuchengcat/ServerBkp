@@ -1,0 +1,9 @@
+sensor:
+ - platform: template
+   sensors:
+     electricity_usage_with_reset:
+       friendly_name: "用电量（含重置）"
+       value_template: "{{ states('sensor.last_electricity_usage_6319') }}"
+       attribute_templates:
+         last_reset: "{{ state_attr('sensor.last_electricity_usage_6319', 'last_reset') }}"
+         updated: "{{ now().strftime('%Y-%m-%d %H:%M:%S') }}"
