@@ -186,6 +186,7 @@ services:
     image: "ghcr.io/home-assistant/home-assistant:stable"
     volumes:
       - /mnt/SDD128G/homeassistant/config:/config
+      - /mnt/SDD128G/sgcc_elec:/sgcc_elec
       - /etc/localtime:/etc/localtime:ro
       - /run/dbus:/run/dbus:ro
     restart: unless-stopped
