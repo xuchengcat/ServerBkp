@@ -5,7 +5,7 @@
 #
 ####################################
 
-excludefile="./exclude.txt"
+excludefile="/mnt/SDD128G/exclude.txt"
 
 backup_ubuntu="/"
 backup_sdd128="/mnt/SDD128G"
