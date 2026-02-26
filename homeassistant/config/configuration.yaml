@@ -1,10 +1,17 @@
+# =============================================================================
+# Home Assistant Configuration
+# =============================================================================
+
 homeassistant:
   packages: !include_dir_named packages/
 
 # Loads default set of integrations. Do not remove.
 default_config:
 
-# Load frontend themes from the themes folder
+# =============================================================================
+# Frontend & UI
+# =============================================================================
+
 frontend:
   extra_module_url:
     - /hacsfiles/lovelace-card-mod/card-mod.js
@@ -12,15 +19,6 @@ frontend:
 
 lovelace:
   mode: storage
-    #resources:
-    # - url: /hacsfiles/button-card/button-card.js
-    #  type: module
-    #- url: /hacsfiles/lovelace-layout-card/layout-card.js
-    #  type: module
-    #- url: /hacsfiles/swipe-card/swipe-card.js
-    #  type: module
-    #- url: /hacsfiles/mini-media-player/mini-media-player-bundle.js
-    #  type: module
   dashboards:
     mattias-lovelace:
       mode: yaml
@@ -29,45 +27,50 @@ lovelace:
       show_in_sidebar: true
       filename: dashboards/tablet/ui-lovelace.yaml
 
-# Text-to-speech
-tts:
-  - platform: google_translate
+# =============================================================================
+# Network & Proxy
+# =============================================================================
 
-#support proxy
 http:
   use_x_forwarded_for: true
-  trusted_proxies: 
+  trusted_proxies:
     - 192.168.0.0/24
     - 192.168.192.0/24
     - 172.16.0.0/12
 
+# =============================================================================
+# Text-to-Speech
+# =============================================================================
+
+tts:
+  - platform: google_translate
+
+# =============================================================================
+# Includes - External YAML files
+# =============================================================================
+
 automation: !include automations.yaml
 script: !include scripts.yaml
 scene: !include scenes.yaml
-sensor: !include custom_sensors.yaml
 
-#WOL Button
-switch:
-  - platform: wake_on_lan
-    name: "XuauGame"                 # 定义HA中实体的名称,可任意命名
-    mac: "D8:43:AE:9D:74:D5"        # 主机(电脑)的MAC地址
-    host: "192.168.2.2"            # 主机(电脑)地址,可省略
-    broadcast_address: "192.168.2.255"      # 广播地址.不可省略.此处假设路由器地址为192.168.1.1,如为其他网段需要修改
-    broadcast_port: 9
-    turn_off: 
-      service: shell_command.turn_off_connect
+# =============================================================================
+# Wake on LAN
+# =============================================================================
 
-script:
-  open_steam:
-    alias: Open Steam Bigpicture
-    sequence:
-      - service: shell_command.turn_on_steam
+wake_on_lan:
+
+# =============================================================================
+# Shell Commands
+# =============================================================================
 
 shell_command:
   turn_off_connect: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "shutdown /s /t 10"'
   turn_on_steam: 'ssh -i /config/.ssh/id_rsa xuche@192.168.2.2 "schtasks /run /tn \"MyFlow\\RunSteam\""'
 
-# Example configuration.yaml entry
+# =============================================================================
+# Input Helpers
+# =============================================================================
+
 input_boolean:
   gamemode:
     name: "游戏模式"
@@ -82,7 +85,7 @@ input_select:
       - "观影"
       - "白天"
     initial: "起床"
-    icon: "mdi:home-automation"
+    icon: mdi:home-automation
 
 input_number:
   disk_temp_sdc:
@@ -97,3 +100,33 @@ input_number:
     max: 100
     step: 1
     unit_of_measurement: "°C"
+
+# =============================================================================
+# Template Entities (新版写法)
+# =============================================================================
+
+template:
+  - sensor:
+      - name: "SuzhouChargeDay1"
+        unit_of_measurement: "kWh"
+        state: "{{ states('sensor.sql_suzhouchargeday1') }}"
+  - switch:
+      - name: "XuauGame"
+        unique_id: xuau_game_wol
+        state: "{{ is_state('device_tracker.xuau_game', 'home') }}"
+        turn_on:
+          - action: wake_on_lan.send_magic_packet
+            data:
+              mac: "D8:43:AE:9D:74:D5"
+              broadcast_address: "192.168.2.255"
+              broadcast_port: 9
+        turn_off:
+          - action: shell_command.turn_off_connect
+        icon: mdi:desktop-tower
+
+sql:
+  - name: "SQL SuzhouChargeDay1"
+    db_url: "sqlite:////sgcc_elec/homeassistant.db"
+    query: "SELECT usage FROM daily3206624836319 ORDER BY date DESC LIMIT 1 OFFSET 0;"
+    column: "usage"
+    unit_of_measurement: "kWh"

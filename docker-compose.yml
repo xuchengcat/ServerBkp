@@ -22,6 +22,7 @@ services:
       - /mnt/HDD14T/Media_Data_HDD/Music:/music 
       - /mnt/HDD14T/Media_Data_HDD/Books:/book 
       - /mnt/HDD14T/Media_Data_HDD/BookMp3:/bookmp3 
+      - /mnt/HDD14T/Media_Data_HDD/Child:/child
     devices:
       - /dev/dri/renderD128:/dev/dri/renderD128
     restart: 'unless-stopped'
@@ -41,7 +42,7 @@ services:
     #   - ./config.json:/app/config.json:ro
 
   xiaomusic:
-    image: docker.hanxi.cc/hanxi/xiaomusic
+    image: hanxi/xiaomusic
     container_name: xiaomusic
     restart: unless-stopped
     ports:
@@ -66,10 +67,10 @@ services:
     restart: unless-stopped
 
   metatube:
-    image: metatube/metatube-server:latest
+    image: ghcr.io/metatube-community/metatube-server:latest
     container_name: metatube
-      # ports:
-      # - "8082:8080"
+    ports:
+      - "8082:8080"
     restart: unless-stopped
     volumes:
       - /mnt/SDD128G/jellyfin/metatube:/var/run
@@ -107,8 +108,8 @@ services:
     # ports:
     #   - "2342:2342" # HTTP port (host:container)
     environment:
-      PHOTOPRISM_ADMIN_USER: "xuau"                  # admin login username
-      PHOTOPRISM_ADMIN_PASSWORD: "123456"            # initial admin password (8-72 characters)
+      PHOTOPRISM_ADMIN_USER: "xuau_123"                  # admin login username
+      PHOTOPRISM_ADMIN_PASSWORD: "Hanyue_520"            # initial admin password (8-72 characters)
       PHOTOPRISM_AUTH_MODE: "public"                 # authentication mode (public, password)
       PHOTOPRISM_ORIGINALS_LIMIT: 5000               # file size limit for originals in MB (increase for high-res video)
       PHOTOPRISM_HTTP_COMPRESSION: "gzip"            # improves transfer speed and bandwidth utilization (none or gzip)
@@ -219,17 +220,18 @@ services:
     cpus: 0.5
     mem_limit: 4g
 
-  # esphome:
-  #   image: ghcr.io/imagegenius/esphome:latest
-  #   container_name: esphome
-  #   environment:
-  #     - TZ=Asia/Shanghai
-  #     - ESPHOME_DASHBOARD_USE_PING=false #optional
-  #   volumes:
-  #     - /mnt/SDD128G/esp_home:/config
-    # ports:
-    #   - 6052:6052
-    # restart: unless-stopped
+  esphome:
+    image: ghcr.io/imagegenius/esphome:latest
+    container_name: esphome
+    environment:
+      - TZ=Asia/Shanghai
+      - ESPHOME_DASHBOARD_USE_PING=false #optional
+    volumes:
+      - /mnt/SDD128G/esp_home/esphome_normal:/config
+    network_mode: host
+      #ports:
+        #- 6052:6052
+    restart: unless-stopped
     
   frigate:
     container_name: frigate
