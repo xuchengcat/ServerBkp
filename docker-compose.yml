@@ -8,6 +8,7 @@ services:
     #   - 8920:8920
     #   - 1900:1900
     #   - 7359:7359
+    # network_mode: host
     group_add:
       - "226"
     volumes:
@@ -87,8 +88,9 @@ services:
       - /mnt/SDD128G/nextcloud:/var/www/html
     environment:
       OVERWRITEPROTOCOL: 'https'
-      OVERWRITECONDADDR: '^[0-9]+\.[0-9]+\.[0-9]+.\[0-9]+$'
-      TRUSTED_PROXIES: '172.18.0.8'
+      OVERWRITECONDADDR: ''
+      OVERWRITEHOST: 'nextcloud.xuchengcat.cn:444'
+      TRUSTED_PROXIES: '172.16.0.0/12'
       TRUSTED_DOMAINS: 'nextcloud.xuchengcat.cn:444'
     cpus: 0.5
     mem_limit: 4g
@@ -260,8 +262,10 @@ services:
       # - "8555:8555/udp" # WebRTC over udp
     environment:
       - PLUS_API_KEY=93a7661b-aab9-4c20-94be-e9ec6c53029a:3c358977e302950122f6881e0ee2d03331ed9529
-    cpus: 2
+    cpus: 2.5
     mem_limit: 6g
+    depends_on:
+      - mosquitto
 
   # shinobi:
     # build:
